@@ -1,27 +1,28 @@
-<div class="main-container">
-  <div class="top-bar">
-    <app-header></app-header>
-    <nav>
-      <a routerLink="/" routerLinkActive="active">Inicio</a>
-      <a routerLink="/service-memory" routerLinkActive="active">Servicios</a>
-    </nav>
-  </div>
-  <div class="blue-section">
-    <h1>Servicio funerario</h1>
-    <div class="opciones">
-      <form class="opcion">
-        <button type="button" (click)="solicitarAfiliado()">Solicitar</button>
-        <p>Afiliado</p>
-      </form>
-      <form class="opcion">
-        <button type="button" (click)="solicitarSinPlan()">Solicitar</button>
-        <p>Sin plan</p>
-      </form>
-    </div>
-  </div>
-  <div class="bottom-bar">
-  </div>
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { HeaderComponent } from '../../shared/components/header/header.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 
-  <div class="service-container" *ngIf="mostrarVistaPerfil">
-  </div>
-</div>
+@Component({
+  selector: 'app-service',
+  standalone: true,
+  imports: [NgIf, HeaderComponent, FooterComponent, RouterOutlet],
+  templateUrl: './services-memory.component.html',
+  styleUrls: ['./services-memory.component.css']
+})
+export class ServiceComponent {
+  mostrarVistaPerfil = false;
+
+  constructor(private router: Router) { }
+
+  solicitarAfiliado() {
+    console.log('Botón de Afiliado clickeado. Redirigiendo a la vista de afiliado');
+    this.router.navigate(['/solicitar-afiliado']);
+  }
+
+  solicitarSinPlan() {
+    console.log('Botón de Sin Plan clickeado');
+  }
+}
