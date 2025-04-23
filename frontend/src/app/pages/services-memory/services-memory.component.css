@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: #edeae5;
+}
+
+.servicio-funerario {
+    background-color: var(--azul-marino);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.servicio-funerario h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.opcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opcion button {
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 5px #6c789d;
+    transition: transform 0.1s ease;
+}
+
+.opcion button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px #6c789d;
+}
+
+.opcion p {
+    margin-top: 10px;
+    color: #1e2e5a;
+    font-size: 0.9rem;
+}

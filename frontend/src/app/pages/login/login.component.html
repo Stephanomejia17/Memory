@@ -1,1 +1,22 @@
-<p>login works!</p>
+<main class="login-container">
+    <h1 class="title">MEMORY</h1>
+    <section class="login-box">
+        <form [formGroup]="loginForm">
+            <h2>INICIAR SESIÓN</h2>
+
+            <label for="typeDocument">Tipo documento</label>
+            <input type="text" id="typeDocument" formControlName="typeDocument"
+                placeholder="-------------------------" />
+
+            <label for="document">Documento</label>
+            <input type="text" id="document" formControlName="document" placeholder="-------------------------" />
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" formControlName="password" placeholder="-------------------------" />
+
+            <button type="button" class="btn-login" (click)="onLogin()">INICIAR</button>
+
+            <a [routerLink]="['/sign-up']" class="link-create">Crear cuenta</a>
+        </form>
+    </section>
+</main>

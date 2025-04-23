@@ -1,6 +1,6 @@
 body {
     box-sizing: border-box;
-    font-family: var(font-family);
+    font-family: 'Segoe UI', sans-serif;
     height: 100%;
 }
 
@@ -104,10 +104,24 @@ body {
 }
 
 .opciones button {
+    margin-left: 58rem;
     background-color: white;
     border: none;
     border-radius: 25px;
     padding: 0.8rem 2rem;
+    font-weight: bold;
+    box-shadow: 2px 3px 0px #9ba2b0;
+    cursor: pointer;
+}
+
+.salir {
+    position: absolute;
+    top: 91.5%;
+    left: 94%;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 0.8rem 1rem;
     font-weight: bold;
     box-shadow: 2px 3px 0px #9ba2b0;
     cursor: pointer;
