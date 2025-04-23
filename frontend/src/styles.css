@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --pointer: #5A189A;
+    --letter: #3a0073;
+    --azul-marino: #3dd2da;
+    --negro-gris: #333;
+    --white-f: #fff;
+    --white-hover: #dff8f9;
+
+    --font-primary: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+}
