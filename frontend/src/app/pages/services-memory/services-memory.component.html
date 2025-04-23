@@ -1,13 +1,27 @@
-<section class="servicio-funerario">
+<div class="main-container">
+  <div class="top-bar">
+    <app-header></app-header>
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Inicio</a>
+      <a routerLink="/service-memory" routerLinkActive="active">Servicios</a>
+    </nav>
+  </div>
+  <div class="blue-section">
     <h1>Servicio funerario</h1>
     <div class="opciones">
-        <form class="opcion">
-            <button type="submit">Solicitar</button>
-            <p>Afiliado</p>
-        </form>
-        <form class="opcion">
-            <button type="submit">Solicitar</button>
-            <p>Sin plan</p>
-        </form>
+      <form class="opcion">
+        <button type="button" (click)="solicitarAfiliado()">Solicitar</button>
+        <p>Afiliado</p>
+      </form>
+      <form class="opcion">
+        <button type="button" (click)="solicitarSinPlan()">Solicitar</button>
+        <p>Sin plan</p>
+      </form>
     </div>
-</section>
+  </div>
+  <div class="bottom-bar">
+  </div>
+
+  <div class="service-container" *ngIf="mostrarVistaPerfil">
+  </div>
+</div>
