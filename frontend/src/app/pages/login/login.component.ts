@@ -2,37 +2,55 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, ReactiveFormsModule],
+  standalone: true,
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  types= [
+    { id:'CC' ,name: 'Cédula de Ciudadanía' },
+    { id:'TI' ,name: 'Tarjeta de Identidad' },
+    { id:'CE' ,name: 'Cédula de Extranjería' },
+    { id:'PA' ,name: 'Pasaporte' },
+    { id:'RC' ,name: 'Registro Civil' },
+    { id:'PE' ,name: 'Permiso Especial de Permanencia' },];
 
   router = inject(Router);
   authService = inject(AuthService);
   fb = inject(FormBuilder);
 
   loginForm = this.fb.group({
-    typeDocument: ['', [Validators.required, Validators.minLength(3)]],
-    document: ['', [Validators.required, Validators.minLength(5)]],
+    type_id: [ '',[Validators.required]],
+    id: ['', [Validators.required, Validators.minLength(5)]],
     password: ['', [Validators.required]]
   });
 
   onLogin(){
+    console.log(this.loginForm.value);
+    console.log(this.loginForm.valid);
+    console.log('bton clicked');
     if (this.loginForm.invalid) {
       alert('Verifique todos los campos');
       return;
     }
 
     const user = this.loginForm.value;
-    const success = this.authService.login(user);
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        console.log('Respuesta del backend:', res);
+      },
+      error: (err) => {
+        console.error('Error al iniciar sesión:', err);
+      }
+    });
 
-    if (!!success) {
-      const url = sessionStorage.getItem('redirecTo') || 'home';
-      this.router.navigateByUrl(url);
-    }
+    
   }
 }
