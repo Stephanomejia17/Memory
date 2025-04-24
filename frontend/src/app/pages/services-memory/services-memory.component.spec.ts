@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServicesMemoryComponent } from './services-memory.component';
+import { ServiceComponent } from './service.component';
 
-describe('ServicesMemoryComponent', () => {
-  let component: ServicesMemoryComponent;
-  let fixture: ComponentFixture<ServicesMemoryComponent>;
+describe('ServiceComponent', () => {
+  let component: ServiceComponent;
+  let fixture: ComponentFixture<ServiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ServicesMemoryComponent]
+      imports: [ServiceComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ServicesMemoryComponent);
+    fixture = TestBed.createComponent(ServiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,3 +21,4 @@ describe('ServicesMemoryComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

@@ -24,4 +24,29 @@ export class UserService {
 
         return foundUser;
     }
+
+    async adquirirPlan(user: User): Promise<User> {
+        const foundUser = await this.userRepository.findOne({
+            where: { type_id: user.type_id, id: user.id },
+        });
+        if (!foundUser) {
+            throw new Error('User not found');
+        }
+
+        foundUser.plan = user.plan;
+        return this.userRepository.save(foundUser);
     }
+
+    async retirarPlan(user: User): Promise<User> {
+        const foundUser = await this.userRepository.findOne({
+            where: { type_id: user.type_id, id: user.id },
+        });
+        if (!foundUser) {
+            throw new Error('User not found');
+        }
+
+        foundUser.plan = null;
+        return this.userRepository.save(foundUser);
+
+    }
+}

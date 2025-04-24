@@ -15,14 +15,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   title = 'memory';
-
   showHeader = false;
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // Solo muestra el header si la ruta es exactamente '/home'
         this.showHeader = event.url === '';
       });
   }
