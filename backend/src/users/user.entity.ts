@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, }  from 'typeorm';
+import { Entity, PrimaryColumn, Column, UpdateDateColumn}  from 'typeorm';
 
 @Entity()
 export class User {
@@ -30,4 +30,6 @@ export class User {
   @Column()
   city: string;
   
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
