@@ -6,30 +6,37 @@
             <div class="grid-container">
                 <div class="form-group">
                     <label>Tipo de documento</label>
-                    <input formControlName="typeDocument" type="text" placeholder="..." />
+                        <select class="select" formControlName="type_id">
+                            <option value="" disabled >Selecciona un tipo de documento</option>
+                            <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+                        </select>   
                     <label>Documento</label>
-                    <input formControlName="document" type="text" placeholder="..." />
+                    <input formControlName="id" type="text" placeholder="..." />
                     <label>Nombre</label>
                     <input formControlName="name" type="text" placeholder="..." />
+                    <label>Apellidos</label>
+                    <input formControlName="last_name" type="text" placeholder="..." />
                 </div>
                 <div class="form-group">
-                    <label>Apellidos</label>
-                    <input formControlName="lastName" type="text" placeholder="..." />
+                    <!--<label>Fecha de nacimiento</label>
+                    <input formControlName="birth_date" type="date" placeholder="..." /> -->
                     <label>Correo electrónico</label>
                     <input formControlName="email" type="email" placeholder="..." />
-                    <label>Dirección</label>
-                    <input formControlName="address" type="text" placeholder="..." />
-                </div>
-                <div class="form-group">
                     <label>Ciudad</label>
                     <input formControlName="city" type="text" placeholder="..." />
+                    <label>Dirección</label>
+                    <input formControlName="address" type="text" placeholder="..." />
+                </div>    
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input formControlName="phone" type="text" placeholder="..." />
                     <label>Contraseña</label>
                     <input formControlName="password" type="password" placeholder="..." />
                     <label>Confirmar contraseña</label>
                     <input formControlName="rePassword" type="password" placeholder="..." />
                 </div>
             </div>
-            <button class="btn-primary" type="submit">ENVIAR</button>
+            <button class="btn-primary" type="submit" >ENVIAR</button>
             <button class="btn-google" type="button">REGISTRARSE CON GOOGLE</button>
             <div class="login-link">
                 <span>¿Ya tienes una cuenta?</span>

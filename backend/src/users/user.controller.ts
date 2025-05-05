@@ -23,8 +23,18 @@ export class UserController {
     }
 
     @Post("/login")
-    async (@Body() user: User): Promise<User> {
+    async login(@Body() user: User): Promise<User> {
         return this.userService.login(user);
+    }
+
+    @Post("/adquirirPlan")
+    async adquirirPlan(@Body() user: User): Promise<User> {
+        return this.userService.adquirirPlan(user);
+    }
+
+    @Post("/retirarPlan")
+    async retirarPlan(@Body() user: User): Promise<User> {
+        return this.userService.retirarPlan(user);
     }
 
     /* @Delete(':id')

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { Entity, PrimaryColumn, Column, UpdateDateColumn}  from 'typeorm';
+=======
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn}  from 'typeorm';
+import { Plan } from 'src/plans/plan.entity';
+>>>>>>> 4a589a453c899668e4dc1624af74ddd7234533fa
 
 @Entity()
 export class User {
@@ -29,6 +34,10 @@ export class User {
 
   @Column()
   city: string;
+
+  @ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
+  @JoinColumn({ name: 'planId' })
+  plan: Plan | null;
   
   @UpdateDateColumn()
   updatedAt: Date;

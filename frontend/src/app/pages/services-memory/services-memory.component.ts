@@ -9,8 +9,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-service',
   standalone: true,
   imports: [NgIf, HeaderComponent, FooterComponent, RouterOutlet],
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  templateUrl: './services-memory.component.html',
+  styleUrls: ['./services-memory.component.css']
 })
 export class ServiceComponent {
   mostrarVistaPerfil = false;

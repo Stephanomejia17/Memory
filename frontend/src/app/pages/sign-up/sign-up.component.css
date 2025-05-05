@@ -75,3 +75,23 @@ input {
     font-size: 12px;
     margin-top: 10px;
 }
+
+
+.select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+  }
+  
+  .select:focus { 
+    background-color: #fffefe;
+    outline: none;
+
+  }
