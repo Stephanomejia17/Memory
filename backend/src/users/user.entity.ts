@@ -1,5 +1,4 @@
 import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany, UpdateDateColumn}  from 'typeorm';
-
 import { Plan } from 'src/plans/plan.entity';
 import { Service } from 'src/services/service.entity';
 
@@ -40,6 +39,7 @@ export class User {
   @OneToMany(() => Service, service => service.requestedBy)
   services: Service[];
 
+  
   @UpdateDateColumn()
   updatedAt: Date;
 }
