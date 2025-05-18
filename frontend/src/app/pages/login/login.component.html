@@ -1,20 +1,22 @@
 <main class="login-container">
     <h1 class="title">MEMORY</h1>
     <section class="login-box">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <h2>INICIAR SESIÓN</h2>
 
-            <label for="typeDocument">Tipo documento</label>
-            <input type="text" id="typeDocument" formControlName="typeDocument"
-                placeholder="-------------------------" />
+            <label>Tipo documento</label>
+            <select class="select"  formControlName="type_id">
+                <option value="" disabled >Selecciona un tipo de documento</option>
+                <option  *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+            </select>    
 
-            <label for="document">Documento</label>
-            <input type="text" id="document" formControlName="document" placeholder="-------------------------" />
+            <label>Documento</label>
+            <input type="text" id="id" formControlName="id" placeholder="-------------------------" />
 
-            <label for="password">Contraseña</label>
+            <label>Contraseña</label>
             <input type="password" id="password" formControlName="password" placeholder="-------------------------" />
 
-            <button type="button" class="btn-login" (click)="onLogin()">INICIAR</button>
+            <button type="submit"class="btn-login" >INICIAR</button>
 
             <a [routerLink]="['/sign-up']" class="link-create">Crear cuenta</a>
         </form>

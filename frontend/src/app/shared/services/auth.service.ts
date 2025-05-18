@@ -1,40 +1,38 @@
 import { Injectable, signal } from '@angular/core';
 import Swal from 'sweetalert2';
 import { User } from '../interfaces/user.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable,throwError } from 'rxjs';
+import {catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isSignedUser: any;
+  isLoggedUser = signal(false); 
+  private apiUrl = 'http://localhost:3000';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  login(user: User): boolean {
-    // Validación previa
-    if (!user.document || !user.password) {
-      this.showError('Faltan campos obligatorios');
-      return false;
-    }
+  login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users/login`, user).pipe(
+      tap((userLogged: User) => {
+        this.showSuccess('Bienvenido a Memory');
+        sessionStorage.setItem('userLogged', JSON.stringify(userLogged));
+        this.isLoggedUser.set(true);
+      }),
+      catchError(err => {
+        this.showError('Usuario o contraseña incorrectos');
+        return throwError(() => err);
+      })
+    );
 
-    const userStr = localStorage.getItem(user.document);
-    if (userStr) {
-      const userDB: User = JSON.parse(userStr);
-
-      if (user.password === userDB.password) {
-        sessionStorage.setItem('userLogged', JSON.stringify(userDB));
-        this.isSignedUser.set(true);
-        return true;
-      }
-    }
-
-    this.showError('Credenciales no válidas');
-    return false;
   }
 
   logout(): void {
+    sessionStorage.removeItem('userLogged');
     sessionStorage.clear();
-    this.isSignedUser.set(false);
+    this.isLoggedUser.set(false);
   }
 
   getUser(): User | null {
@@ -43,16 +41,16 @@ export class AuthService {
   }
 
   registry(user: User): void {
-    if (!user.document) {
-      this.showError('El campo documento es obligatorio');
-      return;
-    }
-
-    localStorage.setItem(user.document, JSON.stringify(user));
-  }
-
-  private isUserLogged(): boolean {
-    return !!sessionStorage.getItem('userLogged');
+    this.http.post(`${this.apiUrl}/users/signup`, user).subscribe({
+      next: (response) => {
+        console.log('User registered successfully:', response);
+        this.showSuccess('Usuario registrado exitosamente');
+      },
+      error: (err) => {
+        console.error('Error en el registro:', err);
+        this.showError('Error al registrar usuario. Intenta nuevamente.');
+      }
+    });
   }
 
   private showError(message: string): void {
@@ -60,6 +58,18 @@ export class AuthService {
       title: 'Oops...',
       text: message,
       icon: 'error',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      backdrop: `rgba(0,0,123,0.4) left top no-repeat`
+    });
+  }
+
+  private showSuccess(message: string): void {
+    Swal.fire({
+      icon: 'success',
+      title: 'Éxito',
+      text: message,
       width: 600,
       padding: '3em',
       color: '#716add',

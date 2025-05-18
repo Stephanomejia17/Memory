@@ -1,6 +1,6 @@
 export interface User{
-    typeDocument?:string|null;
-    document?:string|null;
+    type_id?:string|null;
+    id?:string|null;
     name?:string|null;
     lastName?:string|null;
     email?:string|null;
