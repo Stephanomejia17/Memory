@@ -37,6 +37,13 @@ export class UserController {
         return this.userService.retirarPlan(user);
     }
 
+    @Post('/solicitarServicio')
+    async solicitarServicio(@Body() user: User): Promise<User> {
+        return this.userService.solicitarServicioUsuarioRegistrado(user);
+    }
+
+    
+
     /* @Delete(':id')
     async delete(@Param('id') id: string): Promise<void> {
         return this.userService.delete(id);

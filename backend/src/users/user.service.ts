@@ -89,7 +89,7 @@ export class UserService {
 
     }
 
-    async solicitarServicioUsuarioRegistrado(user: User): Promise<Service> {
+    async solicitarServicioUsuarioRegistrado(user: User): Promise<User> {
         const foundUser = await this.userRepository.findOne({
             where : {type_id: user.type_id, id: user.id},
         })
@@ -115,7 +115,30 @@ export class UserService {
         service.dateRequested = new Date();
         service.status = 'pendiente';
 
-        return this.serviceRepository.save(service);
+        const savedService = await this.serviceRepository.save(service);
+        foundUser.services = [...(foundUser.services || []), savedService];
+
+        return this.userRepository.save(user);
         
+    }
+
+    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, nombre: string): Promise<User> {
+        const user = new User();
+        const service = new Service();
+    
+        user.type_id = type_id;
+        user.id = id;
+        user.name = nombre;
+
+        service.requestedBy = user;
+        service.dateRequested = new Date();
+        service.status = 'pendiente';
+
+        const savedService = await this.serviceRepository.save(service);
+        user.services = [...(user.services || []), savedService];
+
+        return this.userRepository.save(user);
+
+
     }
 }
