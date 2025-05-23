@@ -20,7 +20,7 @@ import { ServiceModule } from './services/service.module';
       password: 'admin',
       database: 'Memory-BD',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: false,
     }),
   ],
   controllers: [AppController],
