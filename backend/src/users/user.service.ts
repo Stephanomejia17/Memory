@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Plan } from 'src/plans/plan.entity';
+import { Service } from 'src/services/service.entity';
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,9 @@ export class UserService {
         @InjectRepository(User)
         private userRepository: Repository<User>,
         @InjectRepository(Plan)
-        private planRepository: Repository<Plan>
+        private planRepository: Repository<Plan>,
+        @InjectRepository(Service)
+        private serviceRepository: Repository<Service>
     ) {}
 
     sigup(user: User): Promise<User> {
@@ -84,5 +87,35 @@ export class UserService {
 
         return this.userRepository.save(foundUser);
 
+    }
+
+    async solicitarServicioUsuarioRegistrado(user: User): Promise<Service> {
+        const foundUser = await this.userRepository.findOne({
+            where : {type_id: user.type_id, id: user.id},
+        })
+
+        if (!foundUser) {
+            throw new Error('Usuario no encontrado');
+        } else if (!foundUser.plan) {
+            throw new Error('El usuario no tiene un plan');
+        } 
+
+        const foundPlan = await this.planRepository.findOne({
+            where: { id: foundUser.plan.id },
+            relations: ['admin', 'members'],
+        });
+
+        if (!foundPlan) {
+            throw new Error('El usuario no cuenta con un plan')
+        }
+
+        const service = new Service();
+        service.requestedBy = foundUser;
+        service.plan = foundPlan;
+        service.dateRequested = new Date();
+        service.status = 'pendiente';
+
+        return this.serviceRepository.save(service);
+        
     }
 }
