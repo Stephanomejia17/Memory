@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Service } from './service.entity';
+import { User } from 'src/users/user.entity';
+import { EmailService } from 'src/email/email.service';
 
 
 @Injectable()   
@@ -9,6 +11,9 @@ export class ServiceService {
     constructor(
         @InjectRepository(Service)
         private serviceRepository: Repository<Service>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>,
+        private readonly emailService: EmailService,
     ) {}
 
     async createService(service: Service): Promise<Service> {
@@ -34,5 +39,17 @@ export class ServiceService {
 
     async deleteService(id: number): Promise<void> {
         await this.serviceRepository.delete(id);
+    }
+
+    async sendConfirmation(user: User): Promise<void> {
+        if (!user.email) {
+            throw new Error('El usuario no tiene un correo electronico')
+        }
+
+        const subject = 'Confirmación de solicitud de servicio';
+        const message = 'Hola ${user.name}, \n\nTu solicitud ha sido recibida y está siendo procesada.\n\nGracias por usar nuestro sistema.';
+
+        await this.emailService.sendEmail(user.email, subject, message);
+    
     }
 }
