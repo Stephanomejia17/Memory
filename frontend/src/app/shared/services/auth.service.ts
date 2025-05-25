@@ -8,18 +8,19 @@ import {catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   isLoggedUser = signal(false); 
   private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
-  login(user: User): Observable<User> {
+  login(user: User): Observable<any> {
     return this.http.post<User>(`${this.apiUrl}/users/login`, user).pipe(
-      tap((userLogged: User) => {
+      tap(() => {
         this.showSuccess('Bienvenido a Memory');
-        sessionStorage.setItem('userLogged', JSON.stringify(userLogged));
-        this.isLoggedUser.set(true);
+        //sessionStorage.setItem('userLogged', 'true');
+        this.isLoggedUser.set(true)
       }),
       catchError(err => {
         this.showError('Usuario o contraseña incorrectos');
