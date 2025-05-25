@@ -12,10 +12,10 @@ export class UserController {
         return this.userService.findAll();
     }*/
 
-        @Put(':id') // HU1
-        updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-          return this.userService.updateUser(id, updateUserDto);
-        }
+    @Put(':id') // HU1
+    updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+        return this.userService.updateUser(id, updateUserDto);
+    }
 
     @Post("/signup")
     async create(@Body() user: User): Promise<User> {
@@ -38,19 +38,22 @@ export class UserController {
     }
 
     @Post('/solicitarServicio')
-    async solicitarServicio(@Body() user: User): Promise<User> {
-        return this.userService.solicitarServicioUsuarioRegistrado(user);
+    async solicitarServicio(@Body() body: any): Promise<User> {
+        const user: User = body.user;
+        const name: string = body.name;
+        return this.userService.solicitarServicioUsuarioRegistrado(user, name);
     }
 
     @Post('/solicitarServicioNoRegistrado')
     async solicitarServicioNoRegistrado(@Body() body: any): Promise<User> {
-        if (body.type_id && body.id && body.name && body.last_name && body.email) {
+        if (body.type_id && body.id && body.name && body.last_name && body.email && body.name_service) {
             return this.userService.solicitarServicioUsuarioNoRegistrado(
                 body.type_id,
                 body.id,
                 body.name,
                 body.last_name,
                 body.email,
+                body.name_service,
             );
         } else {
             throw new BadRequestException('Datos insuficientes para solicitar servicio')

@@ -20,19 +20,19 @@ export class Service {
   status: string;
 
   @Column()
-    admin_type_id: string;
+  admin_type_id: string;
 
-    @Column()
-    admin_id: string;
+  @Column()
+  admin_id: string;
 
-  @ManyToOne(() => User, user => user.services)
+  @ManyToOne(() => User, user => user.id)
   @JoinColumn([
         { name: 'admin_type_id', referencedColumnName: 'type_id' },
         { name: 'admin_id', referencedColumnName: 'id' },
     ])
   requestedBy: User;
 
-  @Column()
+  @Column({ nullable: true })
   planId: number;
 
   @ManyToOne(() => Plan, plan => plan.services)

@@ -59,19 +59,19 @@ export class UserService {
 
         if (!foundUser) {
             throw new Error('Usuario no encontrado');
-        } else if (!foundUser.plan) {
+        } else if (!foundUser.planId) {
             throw new Error('El usuario no tiene un plan');
         } 
 
         const foundPlan = await this.planRepository.findOne({
-            where: { id: foundUser.plan.id },
+            where: { id: foundUser.planId },
             relations: ['admin', 'members'],
         });
 
         if (!foundPlan) {
             throw new Error('Plan no encontrado');
-        } else if (foundPlan.admin.id == foundUser.id) {
-            if (foundPlan.members.length === 0) {
+        } else if (foundPlan.admin.type_id == foundUser.type_id && foundPlan.admin.id == foundUser.id) {
+            if (foundPlan.members.length == 1) {
                 throw new Error('El administrador es el único miembro del plan. No se puede retirar.');
             } 
             foundUser.plan = null;
@@ -89,40 +89,41 @@ export class UserService {
 
     }
 
-    async solicitarServicioUsuarioRegistrado(user: User): Promise<User> {
+    async solicitarServicioUsuarioRegistrado(user: User, name: string): Promise<User> {
         const foundUser = await this.userRepository.findOne({
             where : {type_id: user.type_id, id: user.id},
         })
 
         if (!foundUser) {
             throw new Error('Usuario no encontrado');
-        } else if (!foundUser.plan) {
+        } else if (!foundUser.planId) {
             throw new Error('El usuario no tiene un plan');
         } 
 
         const foundPlan = await this.planRepository.findOne({
-            where: { id: foundUser.plan.id },
+            where: { id: foundUser.planId },
             relations: ['admin', 'members'],
         });
 
         if (!foundPlan) {
-            throw new Error('El usuario no cuenta con un plan')
+            throw new Error('El plan registrado por el usuario no existe')
         }
 
         const service = new Service();
+        service.name = name;
         service.requestedBy = foundUser;
         service.plan = foundPlan;
         service.dateRequested = new Date();
         service.status = 'pendiente';
 
         const savedService = await this.serviceRepository.save(service);
-        foundUser.services = [...(foundUser.services || []), savedService];
+        //foundUser.services = [...(foundUser.services || []), savedService];
 
         return this.userRepository.save(user);
         
     }
 
-    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, name: string, last_name: string, email: string): Promise<User> {
+    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, name: string, last_name: string, email: string, name_service: string): Promise<User> {
         const user = new User();
         const service = new Service();
     
@@ -134,12 +135,13 @@ export class UserService {
 
         const savedUser = await this.userRepository.save(user);
 
+        service.name = name_service;
         service.requestedBy = savedUser;
         service.dateRequested = new Date();
         service.status = 'pendiente';
 
         const savedService = await this.serviceRepository.save(service);
-        savedUser.services = [...(savedUser.services || []), savedService];
+        //savedUser.services = [...(savedUser.services || []), savedService];
 
         return this.userRepository.save(savedUser);
 
