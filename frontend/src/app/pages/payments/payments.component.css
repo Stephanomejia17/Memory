@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Tenor+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+  background-size: cover;
+  color: #4c5a77;
+}
+
+.container {
+  position: relative;
+  left: 33%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 33%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #3a4a67;
+}
+
+.resumen {
+  background-color: #edf1f6;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.resumen h2, .resumen p {
+  font-size: 1rem;
+  color: #4c5a77;
+}
+
+.resumen span {
+  font-weight: bold;
+  color: #3b5998;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #3a4a67;
+}
+
+.formulario input {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #cfd9e6;
+  background-color: #f8f9fb;
+  color: #4c5a77;
+  font-size: 0.95rem;
+}
+
+.formulario input::placeholder {
+  color: #a0aaba;
+}
+
+.formulario button {
+  margin-top: 2rem;
+  background-color: #a8b5c3;
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #8d9aad;
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Tenor+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+  background-size: cover;
+  color: #4c5a77;
+}
+
+.container {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.container h1 {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #3a4a67;
+}
+
+.planes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.plan {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.plan:hover {
+  transform: translateY(-8px);
+}
+
+.plan h2 {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #3a4a67;
+}
+
+.precio {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #607ea6;
+  margin-bottom: 1.5rem;
+}
+
+.caracteristicas {
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.caracteristicas li {
+  margin-bottom: 0.6rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.caracteristicas li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #90a0b7;
+}
+
+.btn_afiliacion {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background-color: #a8b5c3;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn_afiliacion:hover {
+  background-color: #8d9aad;
+}

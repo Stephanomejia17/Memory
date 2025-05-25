@@ -1,0 +1,64 @@
+* {
+box-sizing: border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+margin: 0;
+padding: 0;
+background-color: #dfe3e8;
+}
+
+.container {
+background-color: #dfe3e8;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.box {
+background-color: #a7def3;
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 2rem;
+}
+
+.info-llegada {
+text-align: center;
+margin-bottom: 1.5rem;
+}
+
+.info-llegada h2 {
+color: #1b1f54;
+margin-bottom: 0.5rem;
+}
+
+.info-llegada p {
+color: #1f2a77;
+font-size: 15px;
+max-width: 500px;
+}
+
+.mapa {
+background-color: #eaeaea;
+border-radius: 25px;
+padding: 1rem;
+width: 90%;
+max-width: 800px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn_salir {
+position: absolute;
+top: 91.5%;
+left: 90%;
+background-color: white;
+border: none;
+padding: 0.7rem 2rem;
+border-radius: 25px;
+font-weight: bold;
+box-shadow: 2px 3px 0px #9ba2b0;
+cursor: pointer;
+}  

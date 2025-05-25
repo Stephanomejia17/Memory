@@ -1,0 +1,120 @@
+* {
+box-sizing: border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+width: 100%;
+min-height: 100vh;
+background-color: #e9edf1;
+}
+
+.transfer {
+background-color: #a7def3;
+padding: 2rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: flex-start;
+}
+
+.perfil {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.foto {
+width: 100px;
+height: 100px;
+background-color: #174d74;
+border-radius: 50%;
+background-size: cover;
+background-position: center;
+margin-bottom: 1rem;
+}
+
+.premium {
+background-color: #f1f1f1;
+color: #00a3a5;
+padding: 0.3rem 1rem;
+border-radius: 20px;
+font-weight: bold;
+}
+
+.datos {
+flex: 1;
+max-width: 700px;
+}
+
+.nombre-id {
+display: flex;
+justify-content: space-between;
+gap: 1rem;
+margin-bottom: 2rem;
+}
+
+.nombre-id input {
+flex: 1;
+padding: 0.5rem 1rem;
+border-radius: 25px;
+border: none;
+text-align: center;
+font-weight: bold;
+background-color: #e1e9fc;
+}
+
+.opciones {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 1.5rem;
+}
+
+.grupo label {
+display: block;
+font-weight: bold;
+margin-bottom: 0.5rem;
+color: #1f2a77;
+}
+
+.opcion {
+display: block;
+width: 100%;
+margin: 0.3rem 0;
+padding: 0.6rem 1rem;
+border: none;
+border-radius: 25px;
+background-color: #dde8ff;
+font-weight: bold;
+color: #3b3663;
+cursor: pointer;
+}
+
+.opcion:hover {
+background-color: #00a3a5;
+color: white;
+}
+
+.confirmar {
+background-color: white;
+border: none;
+border-radius: 25px;
+padding: 0.8rem 2rem;
+font-weight: bold;
+box-shadow: 2px 3px 0px #9ba2b0;
+cursor: pointer;
+}
+
+.confirmar {
+  position: absolute;
+  top: 91.5%;
+  left: 87%;
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  box-shadow: 2px 3px 0px #9ba2b0;
+  cursor: pointer;
+}
