@@ -31,8 +31,8 @@ export class User {
   @Column()
   city: string;
 
-  @ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
+  /*@ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
   @JoinColumn({ name: 'planId' })
-  plan: Plan | null;
+  plan: Plan | null;*/
   
 }
