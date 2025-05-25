@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DeceasedComponent } from './pages/deceased/deceased.component';
 import { PlansComponent } from './pages/plans/plans.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 export const routes: Routes = [
     {
@@ -41,5 +42,9 @@ export const routes: Routes = [
         path:'plans',
         component:PlansComponent
     },
+    { 
+        path:'confirm',
+        component:ConfirmComponent
+    }
 
 ];
