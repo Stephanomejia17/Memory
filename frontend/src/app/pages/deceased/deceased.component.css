@@ -1,22 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Tenor+Sans&display=swap');
+
 body {
-    box-sizing: border-box;
-    font-family: var(font-family);
-    height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+  background-size: cover;
+  color: #4c5a77;
 }
 
 .container {
     margin-top: 4.5%;
     width: 100%;
     height: 80%;
-    background-color: #f0ece7;
 }
 
 .perfil {
-    background-color: #b9e8fa;
+    font-family: 'Tenor Sans', sans-serif;
+    background-color: #dbe7f3;
     padding: 2rem;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    height: 375px;
 }
 
 .foto {
@@ -25,15 +29,21 @@ body {
 }
 
 .foto h2 {
-    color: #1f2a77;
+    position: relative;
+    top: 20%;
+    left: 63%;
+    color: #4c5a77;
     font-size: 22px;
     margin-bottom: 1rem;
+    height: 100px;
 }
 
 .persona {
+    position: relative;
+    left: 65%;
     width: 120px;
     height: 120px;
-    background-color: #17a2b8;
+    background-color: #4c5a77;
     border-radius: 50%;
     margin: 0 auto 1rem;
     background-size: cover;
@@ -41,8 +51,10 @@ body {
 }
 
 .standard {
-    background-color: #f0ece7;
-    color: #00a3a5;
+    position: relative;
+    left: 65%;
+    background-color: #edf1f6;
+    color: #3a4a67;
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 25px;
@@ -54,39 +66,43 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 50%;
-    min-width: 200px;
+    width: 30%;
   }
 
 .lista button {
-background: #eae6df;
+position: relative;
+top: 20%;
+left: -15%;
+background: #edf1f6;
 border: none;
 padding: 12px 20px;
 border-radius: 20px;
 font-size: 16px;
-color: #422b5d;
+color: #4c5a77;
 cursor: pointer;
 transition: background 0.3s;
 }
 
 .lista button:hover {
-    background: #7f91ac;
-    color: #fff;
+    background: #3a4a67;
+    color: #edf1f6;
 }
 
 .opciones {
-    background-color: #f0ece7;
     display: flex;
     justify-content: space-evenly;
     padding: 1rem;
 }
 
 .opciones button {
-    background-color: white;
-    border: none;
+    background-color: #edf1f6;;
+    border-color: gray;
     border-radius: 25px;
     padding: 0.8rem 2rem;
     font-weight: bold;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #4c5a77;
     box-shadow: 2px 3px 0px #9ba2b0;
     cursor: pointer;
 }
