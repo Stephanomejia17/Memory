@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestException} from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -40,6 +40,21 @@ export class UserController {
     @Post('/solicitarServicio')
     async solicitarServicio(@Body() user: User): Promise<User> {
         return this.userService.solicitarServicioUsuarioRegistrado(user);
+    }
+
+    @Post('/solicitarServicioNoRegistrado')
+    async solicitarServicioNoRegistrado(@Body() body: any): Promise<User> {
+        if (body.type_id && body.id && body.name && body.last_name && body.email) {
+            return this.userService.solicitarServicioUsuarioNoRegistrado(
+                body.type_id,
+                body.id,
+                body.name,
+                body.last_name,
+                body.email,
+            );
+        } else {
+            throw new BadRequestException('Datos insuficientes para solicitar servicio')
+        }
     }
 
     

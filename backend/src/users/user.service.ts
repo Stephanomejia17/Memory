@@ -122,13 +122,14 @@ export class UserService {
         
     }
 
-    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, name: string, email: string): Promise<User> {
+    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, name: string, last_name: string, email: string): Promise<User> {
         const user = new User();
         const service = new Service();
     
         user.type_id = type_id;
         user.id = id;
         user.name = name;
+        user.last_name = last_name;
         user.email = email;
 
         const savedUser = await this.userRepository.save(user);
