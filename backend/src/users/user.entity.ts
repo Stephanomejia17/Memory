@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany, UpdateDateColumn}  from 'typeorm';
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany, UpdateDateColumn, Index}  from 'typeorm';
 import { Plan } from 'src/plans/plan.entity';
 import { Service } from 'src/services/service.entity';
 
@@ -20,17 +20,20 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
-  @Column()
+  @Column({ nullable: true })
   city: string;
+
+  @Column({ nullable: true })
+  planId: number | null;
 
   @ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
   @JoinColumn({ name: 'planId' })
@@ -38,7 +41,6 @@ export class User {
 
   @OneToMany(() => Service, service => service.requestedBy)
   services: Service[];
-
   
   @UpdateDateColumn()
   updatedAt: Date;

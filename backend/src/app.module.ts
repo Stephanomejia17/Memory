@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { PlanModule } from './plans/plan.module';
 import { ServiceModule } from './services/service.module';
+import { User } from './users/user.entity';
+import { Plan } from './plans/plan.entity';
+import { Service } from './services/service.entity';
 
 
 @Module({
@@ -19,8 +22,9 @@ import { ServiceModule } from './services/service.module';
       username: 'postgres',
       password: 'admin',
       database: 'Memory-BD',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      entities: [User, Plan, Service],
+      dropSchema: true,
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
