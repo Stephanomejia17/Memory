@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestE
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import {Request,Response} from 'express'
+import { UpdateUserDto } from './dto/update-user.dto';
 
 
 @Controller('/users')
@@ -13,8 +14,11 @@ export class UserController {
         return this.userService.findAll();
     }*/
 
-    @Put(':id') // HU1
-    updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    @Put(':id')
+    async updateUser(
+        @Param('id') id: string,
+        @Body() updateUserDto: UpdateUserDto,
+    ) {
         return this.userService.updateUser(id, updateUserDto);
     }
 

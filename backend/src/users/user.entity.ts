@@ -42,7 +42,7 @@ export class User {
   /*@OneToMany(() => Service, service => service.requestedBy)
   services: Service[];*/
   
-  /*@UpdateDateColumn()
-  updatedAt: Date;*/
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 
 }
