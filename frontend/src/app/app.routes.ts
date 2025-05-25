@@ -8,6 +8,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DeceasedComponent } from './pages/deceased/deceased.component';
 import { PlansComponent } from './pages/plans/plans.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { CertificateComponent } from './pages/certificate/certificate.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
+import { TransferComponent } from './pages/transfer/transfer.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +48,19 @@ export const routes: Routes = [
     { 
         path:'confirm',
         component:ConfirmComponent
+    },
+    //Desde aca cambie naty
+    { 
+        path:'certificate',
+        component:CertificateComponent
+    },
+    {
+        path:'payments',
+        component:PaymentsComponent
+    },
+    {
+        path:'transfer',
+        component:TransferComponent
     }
 
 ];

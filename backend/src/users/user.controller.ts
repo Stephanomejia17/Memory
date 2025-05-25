@@ -13,10 +13,10 @@ export class UserController {
         return this.userService.findAll();
     }*/
 
-    @Put(':id') // HU1
+    /*@Put(':id') // HU1
     updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
         return this.userService.updateUser(id, updateUserDto);
-    }
+    }*/
 
     @Post("/signup")
     async create(@Body() user: User): Promise<User> {
@@ -51,7 +51,7 @@ export class UserController {
         
     }
 
-    /*@Post("/adquirirPlan")
+    @Post("/adquirirPlan")
     async adquirirPlan(@Body() user: User): Promise<User> {
         return this.userService.adquirirPlan(user);
     }
