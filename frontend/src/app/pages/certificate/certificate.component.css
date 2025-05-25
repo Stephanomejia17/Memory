@@ -1,16 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Tenor+Sans&display=swap');
+
+body {
+  background: white;
+  font-family: 'Montserrat', sans-serif;
+  background-size: cover;
+  color: #4c5a77;
+}
+
 .container {
-background-color: #eaeaea;
+background-color: #edf1f6;
 padding: 30px;
 border-radius: 20px;
 max-width: 600px;
 margin: 30px auto;
-box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-font-family: 'Segoe UI', sans-serif;
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+font-family: 'Tenor Sans', sans-serif;
 }
 
 .container h2 {
 text-align: center;
-color: #003366;
+color: #3a4a67;
 margin-bottom: 20px;
 }
 
@@ -28,6 +37,9 @@ flex-direction: column;
 .campo label {
 font-weight: bold;
 margin-bottom: 5px;
+color: #3a4a67;
+font-size: 14px;
+font-family: 'Montserrat', sans-serif;
 }
 
 .campo input,
@@ -36,10 +48,22 @@ padding: 10px;
 border-radius: 10px;
 border: 1px solid #ccc;
 font-size: 14px;
+font-family: 'Montserrat', sans-serif;
+}
+
+.campo button{
+border-radius: 15px;
+font-size: 14px;
+font-family: 'Montserrat', sans-serif;
+background-color: #edf1f6;
+color: #4c5a77;
+border-color: gray;
+height: 35px;
 }
 
 textarea {
 resize: vertical;
+min-height: 80px;
 }
 
 canvas {
@@ -49,12 +73,12 @@ background-color: #fff;
 }
 
 .btn_confirmar {
-background-color: #007ba7;
-color: white;
-border: none;
+background-color: #4c5a77;
+color: #edf1f6;
+border-color: gray;
 padding: 12px;
 border-radius: 15px;
 font-size: 16px;
 cursor: pointer;
-transition: 0.3s;
+width: 100%;
 }

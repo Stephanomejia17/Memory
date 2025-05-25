@@ -5,6 +5,9 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { ServiceComponent } from './pages/services-memory/services-memory.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { DeceasedComponent } from './pages/deceased/deceased.component';
+import { PlansComponent } from './pages/plans/plans.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +33,18 @@ export const routes: Routes = [
     { 
         path:'services-memory',
         component:ServiceComponent
+    },
+    { 
+        path:'deceased',
+        component:DeceasedComponent
+    },
+    { 
+        path:'plans',
+        component:PlansComponent
+    },
+    { 
+        path:'confirm',
+        component:ConfirmComponent
     }
 
 ];

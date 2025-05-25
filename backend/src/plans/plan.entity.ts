@@ -1,5 +1,6 @@
 import { User } from 'src/users/user.entity';
 import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany, OneToOne}  from 'typeorm';
+import { Service } from 'src/services/service.entity';
 
 @Entity()
 export class Plan {
@@ -9,14 +10,25 @@ export class Plan {
     @Column()
     name: string;
 
-    //admin
+    @Column()
+    admin_type_id: string;
+
+    @Column()
+    admin_id: string;
+
     @OneToOne(() => User)
-    @JoinColumn()
+    @JoinColumn([
+        { name: 'admin_type_id', referencedColumnName: 'type_id' },
+        { name: 'admin_id', referencedColumnName: 'id' },
+    ])
     admin: User;
 
-    //miembros del plan
     @OneToMany(() => User, (user) => user.plan)
     members: User[];
+
+    @OneToMany(() => Service, service => service.plan)
+    services: Service[];
+
 
 
 }

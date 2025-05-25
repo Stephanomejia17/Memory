@@ -2,11 +2,19 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import{ UsersModule } from './users/users.module';
+import { UsersModule } from './users/users.module';
+import { PlanModule } from './plans/plan.module';
+import { ServiceModule } from './services/service.module';
+import { User } from './users/user.entity';
+import { Plan } from './plans/plan.entity';
+import { Service } from './services/service.entity';
+
 
 @Module({
   imports: [
     UsersModule,
+    PlanModule,
+    ServiceModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -14,7 +22,8 @@ import{ UsersModule } from './users/users.module';
       username: 'postgres',
       password: '023281012',
       database: 'Memory-BD',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [User, Plan, Service],
+      dropSchema: false,
       synchronize: true,
     }),
   ],

@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import { Entity, PrimaryColumn, Column, UpdateDateColumn}  from 'typeorm';
-=======
-import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn}  from 'typeorm';
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany, UpdateDateColumn, Index}  from 'typeorm';
 import { Plan } from 'src/plans/plan.entity';
->>>>>>> 4a589a453c899668e4dc1624af74ddd7234533fa
+import { Service } from 'src/services/service.entity';
 
 @Entity()
 export class User {
@@ -23,21 +20,27 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
-  @Column()
+  @Column({ nullable: true })
   city: string;
 
-  /*@ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
+  @Column({ nullable: true })
+  planId: number | null;
+
+  @ManyToOne (() => Plan, (plan) => plan.members, { nullable: true })
   @JoinColumn({ name: 'planId' })
-  plan: Plan | null;*/
+  plan: Plan | null;
+
+  /*@OneToMany(() => Service, service => service.requestedBy)
+  services: Service[];*/
   
   @UpdateDateColumn()
   updatedAt: Date;

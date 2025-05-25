@@ -1,7 +1,11 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-certificate',
+  standalone: true,
+  imports: [RouterLink, CommonModule],
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css']
 })
