@@ -1,8 +1,7 @@
-import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestException} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestException, Req, Res} from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import {Request,Response} from 'express'
-
 
 
 @Controller('/users')
