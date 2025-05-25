@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -8,3 +9,13 @@ export const appConfig: ApplicationConfig = {
      provideRouter(routes),
      provideHttpClient(),]
 };
+=======
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+};
+>>>>>>> 9aae2f2 (Avance)
