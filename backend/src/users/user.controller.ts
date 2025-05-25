@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestException} from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import { UpdateUserDto } from './dto/update-user.dto';
+import {Request,Response} from 'express'
+
+
 
 @Controller('/users')
 export class UserController {
@@ -23,11 +25,34 @@ export class UserController {
     }
 
     @Post("/login")
-    async login(@Body() user: User): Promise<User> {
-        return this.userService.login(user);
+    async login(@Body() user: User, @Req() req: Request, @Res() res: Response): Promise<void> {
+        try {
+        const userLogged = await this.userService.login(user);
+
+        if (!userLogged){
+            console.log('NO HAY USER')
+            res.status(401).json({message:'Invalid'}); 
+            return; 
+        }
+
+        req.session.isLoggedIn= true
+        req.session.user ={
+            type_id: userLogged.type_id,
+            id: userLogged.id,
+            name: userLogged.name,
+            lastname: userLogged.last_name
+        };
+        console.log(req.session.user)
+        res.status(200).send({ message: 'Login successful' });
+
+        }
+        catch(error){
+            console.log(error)
+        }
+        
     }
 
-    @Post("/adquirirPlan")
+    /*@Post("/adquirirPlan")
     async adquirirPlan(@Body() user: User): Promise<User> {
         return this.userService.adquirirPlan(user);
     }
