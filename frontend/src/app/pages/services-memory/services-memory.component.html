@@ -10,11 +10,11 @@
     <h1>Servicio funerario</h1>
     <div class="opciones">
       <form class="opcion">
-        <button type="button" (click)="solicitarAfiliado()">Solicitar</button>
+        <a [routerLink]="['/deceased']"><button type="button" (click)="solicitarAfiliado()">Solicitar</button></a>
         <p>Afiliado</p>
       </form>
       <form class="opcion">
-        <button type="button" (click)="solicitarSinPlan()">Solicitar</button>
+        <a [routerLink]="['/deceased']"><button type="button" (click)="solicitarSinPlan()">Solicitar</button></a>
         <p>Sin plan</p>
       </form>
     </div>

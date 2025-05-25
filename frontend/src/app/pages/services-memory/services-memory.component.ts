@@ -4,11 +4,12 @@ import { NgIf } from '@angular/common';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [NgIf, HeaderComponent, FooterComponent, RouterOutlet],
+  imports: [NgIf, HeaderComponent, RouterModule],
   templateUrl: './services-memory.component.html',
   styleUrls: ['./services-memory.component.css']
 })

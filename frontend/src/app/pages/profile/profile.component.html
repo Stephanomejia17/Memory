@@ -3,7 +3,7 @@
         <div class="foto">
             <h2>PERFIL</h2>
             <div class="persona"></div>
-            <button type="button" class="btn_editar">EDITAR</button>
+            <a [routerLink]="['/profile-edit']"><button type="button" class="btn_editar">EDITAR</button></a>
         </div>
 
         <div class="formulario">
@@ -52,8 +52,8 @@
     </form>
 
     <div class="opciones">
-        <button type="button">Miembros</button>
-        <button type="button">Titular</button>
-        <button type="button">Plan</button>
+        <a [routerLink]="['/deceased']"><button type="button">Miembros</button></a>
+        <a [routerLink]="['/profile']"><button type="button">Titular</button></a>
+        <a [routerLink]="['/plans']"><button type="button">Plan</button></a>
     </div>
 </div>
