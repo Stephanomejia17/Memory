@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Tenor+Sans&display=swap');
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f0f0; 
+    font-family: 'Montserrat', sans-serif;
+    background-color: #99bfe5; 
   }
   
   .blue-section h1 {
@@ -30,7 +32,7 @@ body {
     padding: 30px 100px;
     font-size: 1.3rem; 
     cursor: pointer;
-    box-shadow: 0 5px #6c789d;
+    box-shadow: 0 5px #e1ebf5;
     transition: transform 0.1s ease;
   }
   
@@ -51,7 +53,7 @@ body {
   .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; 
+    min-height: 95vh; 
   }
 
   .top-bar {
@@ -62,7 +64,7 @@ body {
   }
   
   .blue-section {
-    background-color: #add8e6;
+    background-color: #bee9f1;
     padding: 80px 20px;
     text-align: center;
     flex-grow: 1; 

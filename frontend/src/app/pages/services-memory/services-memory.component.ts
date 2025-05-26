@@ -6,6 +6,7 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { RouterOutlet } from '@angular/router';
 //Este import
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-service',
@@ -18,14 +19,24 @@ import { RouterModule } from '@angular/router';
 export class ServiceComponent {
   mostrarVistaPerfil = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   solicitarAfiliado() {
-    console.log('Botón de Afiliado clickeado. Redirigiendo a la vista de afiliado');
-    this.router.navigate(['/solicitar-afiliado']);
+    console.log('Botón de Afiliado clickeado.');
+    if (this.authService.isLoggedUser()) {
+      console.log('Usuario logeado. Redirigiendo a /profile');
+      this.router.navigate(['/profile']);
+    } else {
+      console.log('Usuario no logeado. Redirigiendo a /login');
+      this.router.navigate(['/login']);
+    }
   }
 
   solicitarSinPlan() {
-    console.log('Botón de Sin Plan clickeado');
+    console.log('Botón de Sin Plan clickeado. Redirigiendo a /solicitud-sin-plan');
+    this.router.navigate(['/solicitud-sin-plan']); 
   }
 }

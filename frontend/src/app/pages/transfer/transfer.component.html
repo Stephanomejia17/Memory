@@ -1,42 +1,122 @@
-<div class="container">
-<div class="transfer">
-    <div class="perfil">
-    <div class="foto"></div>
-    <div class="premium">PREMIUM</div>
-</div>
-
-    <div class="datos">
-    <div class="nombre-id">
-        <input type="text" value="ANDRES" disabled />
-        <input type="text" value="100154865" disabled />
-    </div>
-
-    <div class="opciones">
-        <div class="grupo">
-        <label>Lugar del cuerpo</label>
-        <button class="opcion">DIRECCION REGISTRADA</button>
-        <button class="opcion">INGRESAR DIRECCION</button>
-        <button class="opcion">HOSPITAL</button>
+<div class="main-container">
+    <div class="top-bar">
+        <div class="logo">
+            <span>MEMORY</span>
         </div>
 
-        <div class="grupo">
-        <label>Velación</label>
-        <button class="opcion">1 HORA</button>
-        <button class="opcion">4 HORAS</button>
-        <button class="opcion">INGRESAR TIEMPO</button>
-        </div>
-
-        <div class="grupo">
-        <label>Cremación</label>
-        <button class="opcion">SI</button>
-        <button class="opcion">NO</button>
-        </div>
-
-        <div class="grupo">
-        <label>Sala</label>
-        <button class="opcion">CAMPOS DE PAZ</button>
-        <button class="opcion">MONTESACRO</button>
+        <div class="home-icon">
+            <a routerLink="/"><i class="fas fa-home"></i></a>
         </div>
     </div>
-    <button class="confirmar">Confirmar</button>
+
+    <div class="profile-page-container">
+        <div class="profile-sidebar">
+            <h2>PERFIL</h2>
+            <div class="profile-avatar">
+            </div>
+            <button class="profile-status-button">PREMIUM</button>
+        </div>
+
+        <div class="profile-details-grid">
+            <div class="grid-item full-width">
+                <label for="memberName">Nombre</label>
+                <input type="text" id="memberName" class="input-field" [(ngModel)]="memberName" placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="grid-item full-width">
+                <label for="memberId">ID</label>
+                <input type="text" id="memberId" class="input-field" [(ngModel)]="memberIdentity" placeholder="Ej: 123456789">
+            </div>
+
+            <div class="grid-item">
+                <label for="locationSelect">Lugar del cuerpo</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'DIRECCION REGITRADA'"
+                            (click)="selectOption('location', 'DIRECCION REGITRADA')">DIRECCION REGISTRADA</button>
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'HOSPITAL'"
+                            (click)="selectOption('location', 'HOSPITAL')">HOSPITAL</button>
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'INGRESAR DIRECCION'"
+                            (click)="selectOption('location', 'INGRESAR DIRECCION')">INGRESAR DIRECCION</button>
+
+                </div>
+                <input *ngIf="selectedLocation === 'INGRESAR DIRECCION'"
+                       type="text"
+                       class="input-field"
+                       [(ngModel)]="customLocationAddress"
+                       placeholder="Ingresa la dirección personalizada">
+            </div>
+
+            <div class="grid-item">
+                <label for="velacionSelect">Velacion</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '1 HORA'"
+                            (click)="selectOption('velacion', '1 HORA')">1 HORA</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '4 HORAS'"
+                            (click)="selectOption('velacion', '4 HORAS')">4 HORAS</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '12 HORAS'"
+                            (click)="selectOption('velacion', '12 HORAS')">12 HORAS</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === 'OTRA HORA'"
+                            (click)="selectOption('velacion', 'OTRA HORA')">OTRA HORA</button>
+                </div>
+                <input *ngIf="selectedVelacionTime === 'OTRA HORA'"
+                       type="text"
+                       class="input-field"
+                       [(ngModel)]="customVelacionInput"
+                       placeholder="Ej: 6 HORAS, 2 DIAS, etc.">
+            </div>
+
+            <div class="grid-item">
+                <label for="cremacionSelect">Cremación</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'NO'"
+                            (click)="selectOption('cremacion', 'NO')">NO</button>
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'SI'"
+                            (click)="selectOption('cremacion', 'SI')">SI</button>
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'OTRO TIPO'"
+                            (click)="selectOption('cremacion', 'OTRO TIPO')">OTRO TIPO</button>
+                </div>
+                <input *ngIf="selectedCremacion === 'OTRO TIPO'"
+                       type="text"
+                       class="input-field"
+                       [(ngModel)]="customCremacionInput"
+                       placeholder="Ej: Ecológica, Tradicional, etc.">
+            </div>
+
+            <div class="grid-item">
+                <label for="salaSelect">Sala</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedSala === 'MONTESACRO'"
+                            (click)="selectOption('sala', 'MONTESACRO')">MONTESACRO</button>
+                    <button class="option-button"
+                            [class.active]="selectedSala === 'OTRA SALA'"
+                            (click)="selectOption('sala', 'OTRA SALA')">OTRA SALA</button>
+                </div>
+                <input *ngIf="selectedSala === 'OTRA SALA'"
+                       type="text"
+                       class="input-field"
+                       [(ngModel)]="customSalaInput"
+                       placeholder="Ingresa el nombre de la sala">
+            </div>
+        </div>
+
+        <div class="confirm-button-container">
+            <button class="confirm-button" (click)="confirmChanges()">Confirmar</button>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="footer-content">
+
+        </div>
+    </div>
 </div>

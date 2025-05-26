@@ -1,0 +1,120 @@
+<div class="main-container">
+    <div class="top-bar">
+        <div class="logo">
+            <span>MEMORY</span>
+        </div>
+
+        <div class="home-icon">
+            <a routerLink="/"><i class="fas fa-home"></i></a>
+        </div>
+    </div>
+
+    <div class="profile-page-container">
+        <div class="profile-sidebar">
+            <h2>SOLICITUD DE SERVICIO</h2>
+            <div class="profile-avatar">
+                </div>
+            <button class="profile-status-button">SIN PLAN</button>
+        </div>
+
+        <div class="profile-details-grid">
+
+            <h3 class="grid-section-title">Datos del Difunto</h3>
+            <div class="grid-item full-width">
+                <label for="deceasedName">Nombre Completo del Difunto</label>
+                <input type="text" id="deceasedName" class="input-field" [(ngModel)]="deceasedName" placeholder="Ej: Maria de los Angeles">
+            </div>
+            <div class="grid-item full-width">
+                <label for="deceasedId">Cédula del Difunto</label>
+                <input type="text" id="deceasedId" class="input-field" [(ngModel)]="deceasedId" placeholder="Ej: 1234567890">
+            </div>
+
+            <h3 class="grid-section-title">Datos del Solicitante</h3>
+            <div class="grid-item full-width">
+                <label for="requesterName">Nombre del Solicitante</label>
+                <input type="text" id="requesterName" class="input-field" [(ngModel)]="requesterName" placeholder="Ej: Juan">
+            </div>
+            <div class="grid-item full-width">
+                <label for="requesterLastName">Apellido del Solicitante</label>
+                <input type="text" id="requesterLastName" class="input-field" [(ngModel)]="requesterLastName" placeholder="Ej: Pérez">
+            </div>
+
+            <div class="grid-item full-width">
+                <label for="docTypeSelect">Tipo de Documento</label>
+                <select id="docTypeSelect" class="input-field select-field" [(ngModel)]="selectedDocType">
+                    <option value="">Seleccione</option>
+                    <option value="CC">Cédula de Ciudadanía (CC)</option>
+                    <option value="TI">Tarjeta de Identidad (TI)</option>
+                    <option value="CE">Cédula de Extranjería </option>
+                    <option value="PAS">Pasaporte </option>
+                    </select>
+            </div>
+            <div class="grid-item full-width">
+                <label for="requesterId">Cédula del Solicitante</label>
+                <input type="text" id="requesterId" class="input-field" [(ngModel)]="requesterId" placeholder="Ej: 9876543210">
+            </div>
+            <div class="grid-item full-width">
+                <label for="requesterEmail">Correo Electrónico del Solicitante</label>
+                <input type="email" id="requesterEmail" class="input-field" [(ngModel)]="requesterEmail" placeholder="Ej: juan.perez@email.com">
+            </div>
+
+
+            <div class="grid-item">
+                <label for="locationSelect">Lugar del cuerpo</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'DIRECCION REGITRADA'"
+                            (click)="selectOption('location', 'DIRECCION REGITRADA')">DIRECCION REGISTRADA</button>
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'HOSPITAL'"
+                            (click)="selectOption('location', 'HOSPITAL')">HOSPITAL</button>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="velacionSelect">Velacion</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '1 HORA'"
+                            (click)="selectOption('velacion', '1 HORA')">1 HORA</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '4 HORAS'"
+                            (click)="selectOption('velacion', '4 HORAS')">4 HORAS</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '12 HORAS'"
+                            (click)="selectOption('velacion', '12 HORAS')">12 HORAS</button>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="cremacionSelect">Cremación</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'NO'"
+                            (click)="selectOption('cremacion', 'NO')">NO</button>
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'SI'"
+                            (click)="selectOption('cremacion', 'SI')">SI</button>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="salaSelect">Sala</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedSala === 'MONTESACRO'"
+                            (click)="selectOption('sala', 'MONTESACRO')">MONTESACRO</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm-button-container">
+            <button class="confirm-button" (click)="submitRequest()">Solicitar Servicio</button>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="footer-content">
+            </div>
+    </div>
+</div>

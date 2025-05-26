@@ -10,19 +10,18 @@
     <h1>Servicio funerario</h1>
     <div class="opciones">
       <form class="opcion">
-        <a [routerLink]="['/deceased']"><button type="button" (click)="solicitarAfiliado()">Solicitar</button></a>
+        <button type="button" (click)="solicitarAfiliado()">Solicitar</button>
         <p>Afiliado</p>
       </form>
       <form class="opcion">
-        <a [routerLink]="['/deceased']"><button type="button" (click)="solicitarSinPlan()">Solicitar</button></a>
-        <p>Sin plan</p>
+          <button type="button" (click)="solicitarSinPlan()">Solicitar</button>
+          <p>Sin plan</p>
       </form>
     </div>
   </div>
   <div class="bottom-bar">
   </div>
-
   <div class="service-container" *ngIf="mostrarVistaPerfil">
-    </div>
+  </div>
 </div>
-
+>>>>>>> Stashed changes

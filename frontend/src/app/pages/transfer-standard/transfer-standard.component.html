@@ -1,0 +1,90 @@
+<p>transfer-standard works!</p>
+<div class="main-container">
+    <div class="top-bar">
+        <div class="logo">
+            <span>MEMORY</span>
+        </div>
+
+        <div class="home-icon">
+            <a routerLink="/"><i class="fas fa-home"></i></a>
+        </div>
+    </div>
+
+    <div class="profile-page-container">
+        <div class="profile-sidebar">
+            <h2>PERFIL</h2>
+            <div class="profile-avatar">
+            </div>
+            <button class="profile-status-button">STANDARD</button>
+        </div>
+
+        <div class="profile-details-grid">
+            <div class="grid-item full-width">
+                <label for="memberName">Nombre</label>
+                <input type="text" id="memberName" class="input-field" [(ngModel)]="memberName" placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="grid-item full-width">
+                <label for="memberId">ID</label>
+                <input type="text" id="memberId" class="input-field" [(ngModel)]="memberIdentity" placeholder="Ej: 123456789">
+            </div>
+
+            <div class="grid-item">
+                <label for="locationSelect">Lugar del cuerpo</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'DIRECCION REGITRADA'"
+                            (click)="selectOption('location', 'DIRECCION REGITRADA')">DIRECCION REGISTRADA</button>
+                    <button class="option-button"
+                            [class.active]="selectedLocation === 'HOSPITAL'"
+                            (click)="selectOption('location', 'HOSPITAL')">HOSPITAL</button>
+                    </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="velacionSelect">Velacion</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '1 HORA'"
+                            (click)="selectOption('velacion', '1 HORA')">1 HORA</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '4 HORAS'"
+                            (click)="selectOption('velacion', '4 HORAS')">4 HORAS</button>
+                    <button class="option-button"
+                            [class.active]="selectedVelacionTime === '12 HORAS'"
+                            (click)="selectOption('velacion', '12 HORAS')">12 HORAS</button>
+                    </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="cremacionSelect">Cremación</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'NO'"
+                            (click)="selectOption('cremacion', 'NO')">NO</button>
+                    <button class="option-button"
+                            [class.active]="selectedCremacion === 'SI'"
+                            (click)="selectOption('cremacion', 'SI')">SI</button>
+                    </div>
+            </div>
+
+            <div class="grid-item">
+                <label for="salaSelect">Sala</label>
+                <div class="option-group">
+                    <button class="option-button"
+                            [class.active]="selectedSala === 'MONTESACRO'"
+                            (click)="selectOption('sala', 'MONTESACRO')">MONTESACRO</button>
+                    </div>
+            </div>
+        </div>
+
+        <div class="confirm-button-container">
+            <button class="confirm-button" (click)="confirmChanges()">Confirmar</button>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="footer-content">
+
+        </div>
+    </div>
+</div>

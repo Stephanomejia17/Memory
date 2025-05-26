@@ -1,17 +1,16 @@
 <div class="container">
     <form class="perfil">
-    <div class="foto">
-        <h2>PERFIL</h2>
-        <div class="persona"></div>
-        <div class="standard">STANDARD</div>
-    </div>
+        <div class="foto">
+            <h2>PERFIL</h2>
+            <div class="persona"></div>
+            <div class="standard">STANDARD</div>
+        </div>
 
-    <div class="lista">
-        <a [routerLink]="['/certificate']"><button>ANGELA</button></a>
-        <a [routerLink]="['/certificate']"><button>SOFIA</button></a>
-        <a [routerLink]="['/certificate']"><button>ANDRES</button></a>
-        <a [routerLink]="['/certificate']"><button>OSCAR</button></a>
-    </div>
+        <div class="lista">
+            <ng-container *ngFor="let member of members">
+                <button type="button" (click)="onMemberSelect(member)">{{ member.name }}</button>
+            </ng-container>
+        </div>
     </form>
 
     <div class="opciones">
