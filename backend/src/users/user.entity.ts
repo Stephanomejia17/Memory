@@ -39,8 +39,8 @@ export class User {
   @JoinColumn({ name: 'planId' })
   plan: Plan | null;
 
-  /*@OneToMany(() => Service, service => service.requestedBy)
-  services: Service[];*/
+  @OneToMany(() => Service, service => service.requestedBy)
+  services: Service[];
   
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;

@@ -4,6 +4,8 @@ import { User } from '../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import {catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,13 @@ import {catchError, tap } from 'rxjs/operators';
 export class AuthService {
   isLoggedUser = signal(false); 
   private apiUrl = 'http://localhost:3000';
+  router = inject(Router);
 
+  LoggedUser() {
+    return this.isLoggedUser(); // Retorna el estado de isLoggedUser como un signal
+  }
+
+  
   constructor(private http: HttpClient) {}
 
   login(user: User): Observable<any> {
@@ -34,6 +42,9 @@ export class AuthService {
     sessionStorage.removeItem('userLogged');
     sessionStorage.clear();
     this.isLoggedUser.set(false);
+    this.showSuccess('Sesión cerrada exitosamente');
+    this.router.navigate(['/']);
+  
   }
 
   getUser(): User | null {

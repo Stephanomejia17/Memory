@@ -1,9 +1,25 @@
 <nav class="navbar">
     <div class="logo">MEMORY</div>
     <ul class="nav-links">
-        <li><a [routerLink]="['/']" class="active">INICIO</a></li>
-        <li><a [routerLink]="['/services-memory']">NUESTROS SERVICIOS</a></li>
-        <li><a [routerLink]="['/']" fragment="contact">CONTACTO</a></li>
-        <li><a [routerLink]="['/login']"><i class="fa-solid fa-user"></i></a></li>
-    </ul>
-</nav>
+      <li><a [routerLink]="['/']" class="active">INICIO</a></li>
+      <li><a [routerLink]="['/services-memory']">NUESTROS SERVICIOS</a></li>
+      <li><a [routerLink]="['/']" fragment="contact">CONTACTO</a></li>
+   
+      <li class="user-menu" (click)=toggleUserMenu($event)>
+        <i class="fa-solid fa-user"></i>
+        
+     
+        <ul class="dropdown" *ngIf="showUserMenu && !isLoggedIn()">
+          <li><a [routerLink]="['/login']">Iniciar sesión</a></li>
+          <li><a [routerLink]="['/sign-up']">Crear cuenta</a></li>
+        </ul>
+
+        <ul class="dropdown" *ngIf="showUserMenu && isLoggedIn()">
+          <li><a [routerLink]="['/profile']">Mi perfil</a></li>
+          <li><a [routerLink]="['/plans']">Mis planes</a></li>
+          <li><a (click)="logout()">Cerrar sesión</a></li>
+        </ul>
+        </li>
+    </ul>    
+  </nav>
+  

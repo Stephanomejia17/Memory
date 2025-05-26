@@ -24,8 +24,9 @@ export class LoginComponent {
     { id:'PE' ,name: 'Permiso Especial de Permanencia' },];
 
   router = inject(Router);
-  authService = inject(AuthService);
   fb = inject(FormBuilder);
+  authService = inject(AuthService);
+ 
 
   loginForm = this.fb.group({
     type_id: [ '',[Validators.required]],
@@ -46,6 +47,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         console.log('Respuesta del backend:', res);
+        this.router.navigate(['/plans']);
       },
       error: (err) => {
         console.error('Error al iniciar sesión:', err);

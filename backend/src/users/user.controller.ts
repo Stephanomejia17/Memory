@@ -55,7 +55,7 @@ export class UserController {
         
     }
 
-    /*@Post("/adquirirPlan")
+    @Post("/adquirirPlan")
     async adquirirPlan(@Body() user: User): Promise<User> {
         return this.userService.adquirirPlan(user);
     }
@@ -90,7 +90,7 @@ export class UserController {
 
     
 
-    /* @Delete(':id')
+    /*@Delete(':id')
     async delete(@Param('id') id: string): Promise<void> {
         return this.userService.delete(id);
     }*/
