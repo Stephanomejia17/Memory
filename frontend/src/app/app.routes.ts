@@ -72,6 +72,11 @@ export const routes: Routes = [
         path:'solicitud-sin-plan',
         component:SolicitudSinPlanComponent
     
+    },
+    {
+        path:'**',
+        redirectTo:'',
+        pathMatch: 'full'
     }
 
 ];

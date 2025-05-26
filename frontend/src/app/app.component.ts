@@ -30,7 +30,18 @@ export class AppComponent {
         this.showFooter = event.url === ''
         this.showFooter =
           url !== '/login' &&
-          url !== '/sign-up';
+          url !== '/sign-up' && 
+          url !== '/services-memory' && 
+          url !== '/solicitud-sin-plan' &&
+          url !== '/confirm' &&
+          url !== '/payments' &&
+          url !== '/certificate' &&
+          url !== '/deceased' &&
+          url !== '/plans' &&
+          url !== '/profile' &&
+          url !== '/profile-edit' &&
+          url !== '/transfer' &&
+          url !== '/transfer-standar';
       });
   }
 }

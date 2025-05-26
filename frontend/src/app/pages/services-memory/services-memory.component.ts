@@ -11,7 +11,6 @@ import { AuthService } from '../../shared/services/auth.service';
 @Component({
   selector: 'app-service',
   standalone: true,
-  //Y lo agruegue aca, el ultimo
   imports: [NgIf, HeaderComponent, FooterComponent, RouterOutlet, RouterModule],
   templateUrl: './services-memory.component.html',
   styleUrls: ['./services-memory.component.css']
