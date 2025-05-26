@@ -1,61 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Tenor+Sans&display=swap');
+
 body {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
     height: 100%;
+    width: 100%;
+    margin: 0;
+    background-image: url('/fondoInicioSesion.png');
+    background-size: cover;
 }
 
 .container {
-    margin-top: 4.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.form-wrapper {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
     width: 100%;
-    height: 80%;
-    background-color: #f0ece7;
+}
+
+h2 {
+    text-align: center;
+    color: #1f2a77;
+    margin-bottom: 2rem;
+    font-family: 'Tenor Sans', sans-serif;
 }
 
 .perfil {
-    background-color: #b9e8fa;
-    padding: 2rem;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.foto {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.foto h2 {
-    color: #1f2a77;
-    font-size: 22px;
-    margin-bottom: 1rem;
-}
-
-.persona {
-    width: 120px;
-    height: 120px;
-    background-color: #17a2b8;
-    border-radius: 50%;
-    margin: 0 auto 1rem;
-    background-size: cover;
-    background-position: center;
-}
-
-.btn_editar {
-    background-color: #f0ece7;
-    color: #00a3a5;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
 }
 
 .formulario {
     display: grid;
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem 2rem;
-    flex: 1;
-    max-width: 700px;
+    width: 100%;
 }
 
 .box {
@@ -67,16 +54,26 @@ body {
     margin-bottom: 0.3rem;
     color: #1f2a77;
     font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .box input {
-    border: none;
+    border-color: #c8cfde;
     border-radius: 25px;
     padding: 0.5rem 1rem;
-    background-color: #f0ece7;
-    color: #2b1f4a;
+    color: #4c5a77;
     font-weight: bold;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.box select {
+    border-color: #c8cfde;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    color: #4c5a77;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .btn_formulario {
@@ -94,35 +91,5 @@ body {
     box-shadow: 2px 3px 0px #9ba2b0;
     margin: 0 1rem;
     cursor: pointer;
-}
-
-.opciones {
-    background-color: #f0ece7;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem;
-}
-
-.opciones button {
-    margin-left: 58rem;
-    background-color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 0.8rem 2rem;
-    font-weight: bold;
-    box-shadow: 2px 3px 0px #9ba2b0;
-    cursor: pointer;
-}
-
-.salir {
-    position: absolute;
-    top: 91.5%;
-    left: 94%;
-    background-color: white;
-    border: none;
-    border-radius: 40px;
-    padding: 0.8rem 1rem;
-    font-weight: bold;
-    box-shadow: 2px 3px 0px #9ba2b0;
-    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
 }
