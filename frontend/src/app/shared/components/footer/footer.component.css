@@ -12,7 +12,7 @@
 .sedes {
     flex: 1;
     min-width: 280px;
-    background-color: var(--white-f);
+    background-color: #f2f3f5;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -22,12 +22,26 @@
 .sedes h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--azul-marino);
+    color: #98a4b8;
 }
 
 .contacto p,
 .sedes p {
     margin-bottom: 0.5rem;
     font-size: 1rem;
-    color: var(--negro-gris);
+    color: #778da9;
+}
+
+.logoClaro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex: 1;
+    min-width: 100px;
+}
+
+.logoClaro img {
+    max-width: 120px;
+    height: auto;
 }

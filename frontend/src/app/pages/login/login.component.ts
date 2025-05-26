@@ -4,11 +4,12 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, FormsModule, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -3,7 +3,7 @@
 }
 
 .carrusel {
-    background-color: var(--azul-marino);
+    background-color: #c7d2e0;
     padding: 3rem 2rem;
     margin-top: 4rem;
     width: 100vw;
@@ -32,21 +32,23 @@
 .texto h2 {
     font-size: 2rem;
     font-weight: bold;
+    color: #98a4b8;
 }
 
 .texto p {
     font-size: 1.1rem;
     margin: 1rem 0;
     max-width: 500px;
+    color: #98a4b8;
 }
 
 .texto button {
     margin-top: 1rem;
     padding: 10px 20px;
-    background-color: var(--white-f);
-    color: var(--azul-marino);
+    background-color: #fafbfd;
+    color: #98a4b8;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;

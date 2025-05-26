@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule,RouterOutlet, HeaderComponent, FooterComponent,FormsModule],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
@@ -16,12 +16,21 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   title = 'memory';
   showHeader = false;
+  showFooter = true; 
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        this.showHeader = event.url === '';
+      .subscribe((event: NavigationEnd) => {
+        const url = event.urlAfterRedirects;
+
+        this.showHeader = url === '';
+
+        // Oculta el footer en login y register
+        this.showFooter = event.url === ''
+        this.showFooter =
+          url !== '/login' &&
+          url !== '/sign-up';
       });
   }
 }

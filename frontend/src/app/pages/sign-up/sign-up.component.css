@@ -1,97 +1,115 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f2eeeb;
+    background-image: url(/fondo.png); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.contenedor {
+  height: 100vh;
+  background-image: url('/fondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    opacity: 10;
+}
+
+/* Título principal */
+.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #555;
+    font-weight: 300;
+}
+
+/* Cuadro blanco */
+.register-box {
+    background-color: rgba(255, 255, 255, 0.50);
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Subtítulo */
+.register-box h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #6a6a6a;
     text-align: center;
 }
 
-.title {
-    font-size: 20px;
-    padding: 10px 0;
-    color: #000;
-}
-
-.register-box {
-    background-color: #2acbd3;
-    padding: 40px;
-    border-radius: 0 0 10px 10px;
-}
-
-.register-box h2 {
-    color: #000b2c;
-    margin-bottom: 30px;
-}
-
+/* Distribución en 3 columnas */
 .grid-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px 30px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
 }
 
-input {
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    background-color: #f1f1f1;
+/* Inputs y selects */
+input, .select {
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
     text-align: center;
+    font-size: 14px;
+    width: 100%;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
 }
 
-.btn-primary,
-.btn-google {
-    margin: 15px 10px;
-    padding: 10px 40px;
-    border: none;
-    border-radius: 20px;
-    background-color: #1dbac2;
+input:focus, .select:focus {
+    outline: none;
+    border-color: #aaa;
+    background-color: #fff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Espacio entre botones */
+    margin-top: 20px;
+}
+
+/* Botón de registro */
+.btn-primary {
+    background-color: #a3adbf;
     color: white;
     font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
     cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    grid-column: span 3; /* Para que ocupe el ancho total */
 }
 
-.btn-google {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background-color: #ffffff;
-    color: #1dbac2;
-    border: 1px solid #1dbac2;
-}
-
+/* Enlaces de login */
 .login-link {
     display: flex;
     justify-content: space-between;
-    padding: 0 50px;
     font-size: 12px;
     margin-top: 10px;
+    padding: 0 10px;
+    grid-column: span 3;
 }
-
-
-.select {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: none;
-    background-color: #f8f8f8;
-    color: #333;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    
-  }
-  
-  .select:focus { 
-    background-color: #fffefe;
-    outline: none;
-
-  }
