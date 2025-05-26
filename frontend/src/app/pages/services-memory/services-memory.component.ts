@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
@@ -10,10 +8,11 @@ import { AuthService } from '../../shared/services/auth.service';
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [NgIf, HeaderComponent, FooterComponent, RouterOutlet, RouterModule],
+  imports: [NgIf,  RouterOutlet, RouterModule],
   templateUrl: './services-memory.component.html',
   styleUrls: ['./services-memory.component.css']
 })
+
 export class ServiceComponent {
   mostrarVistaPerfil = false;
 

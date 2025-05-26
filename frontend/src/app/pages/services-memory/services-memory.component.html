@@ -1,26 +1,48 @@
-<div class="main-container">
-  <div class="top-bar">
-    <app-header></app-header>
-    <nav>
-      <a routerLink="/" routerLinkActive="active">Inicio</a>
-      <a routerLink="/services-memory" routerLinkActive="active">Servicios</a>
-    </nav>
+<section class="container">
+  <div class="banner">
+    <h1>Servicios Inmediatos</h1>
+    <p class="descripcion">
+      En Memory, entendemos que la pérdida de un ser querido es un momento delicado y doloroso. Por eso, ofrecemos servicios inmediatos para garantizar que cada detalle sea atendido con el máximo respeto y profesionalismo.
+      Nuestro equipo está disponible las 24 horas del día, listo para brindarte el apoyo que necesitas en estos momentos difíciles.
+    </p>
   </div>
-  <div class="blue-section">
-    <h1>Servicio funerario</h1>
-    <div class="opciones">
-      <form class="opcion">
-        <button type="button" (click)="solicitarAfiliado()">Solicitar</button>
-        <p>Afiliado</p>
-      </form>
-      <form class="opcion">
-          <button type="button" (click)="solicitarSinPlan()">Solicitar</button>
-          <p>Sin plan</p>
-      </form>
+
+  <div class="services-container">
+    <div class="services">
+      <h2>Cremación Inmediata</h2>
+      <ul class="caracteristicas">
+        <p>Una opción digna y eficiente para la cremación, con atención prioritaria y discreción.</p><br>
+        <li>Traslado Urgente</li>
+        <li>Proceso de Cremación</li>
+        <li>Urna Conmemorativa</li>
+        <p class="precio">$100/ mes</p>
+      </ul>
+      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
+    </div>
+
+    <div class="services">
+      <h2>Velación Inmediata</h2>
+      <ul class="caracteristicas">
+        <p> Un espacio breve pero significativo para una despedida íntima y respetuosa en poco tiempo.</p><br>
+        <li>Traslado Urgente</li>
+        <li>Sala de Velación</li>
+        <li>Ataúd Básico</li>
+        <p class="precio">$125 / mes</p>
+      </ul>
+      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
+    </div>
+
+    <div class="services">
+      <h2>Servicio Funerario Completo</h2>
+      <ul class="caracteristicas">
+        <p>Un servicio integral que abarca todos los aspectos necesarios para un homenaje completo y respetuoso.</p><br>
+        <li>Traslado Urgente</li>
+        <li>Sala de Velación</li>
+        <li>Ataúd Personalizado</li>
+        <li>Asistencia Psicológica</li>
+        <p class="precio">$150 / mes</p>
+      </ul>
+      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
     </div>
   </div>
-  <div class="bottom-bar">
-  </div>
-  <div class="service-container" *ngIf="mostrarVistaPerfil">
-  </div>
-</div>
+</section>

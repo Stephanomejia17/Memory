@@ -2,13 +2,12 @@
 <section class="carrusel">
     <div class="contenido-carrusel">
         <div class="texto">
-            <h2>Nombre del servicio</h2>
-            <p>--------------------------------------------------------------------------
-                ----------------------------------------------------------------------------
-                ----------------------------------------------------------------------------
-                ----------------------------------------------------------------------------
-                --------------------------------------------------------------------------</p>
-            <button [routerLink]="['/services-memory']">ADQUIERE TUS BENEFICIOS</button>
+            <h2>¿Quienes somos?</h2>
+            
+            <p>En Memory, creemos que el amor trasciende. Nos dedicamos a brindarte un espacio de conexión profunda 
+                y bella con aquellos que han partido. Un servicio donde los recuerdos se transforman en un legado de cariño,
+                permitiéndote honrar su memoria y mantener viva su esencia en tu corazón.</p>
+            <button [routerLink]="['sign-up']">ADQUIERE TUS BENEFICIOS</button>
         </div>
         <div class="correr">
             <div class="imagenes">
@@ -35,6 +34,10 @@
             </div>
         </div>
     </div>
+    <div class="services-container" id="services">
+        <app-service></app-service>
+    </div>
+    
     <div class="plans-container" id="plans">
         <app-plans></app-plans>
     </div>
