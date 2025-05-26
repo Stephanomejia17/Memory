@@ -49,7 +49,6 @@ export const routes: Routes = [
         path:'confirm',
         component:ConfirmComponent
     },
-    //Desde aca cambie naty
     { 
         path:'certificate',
         component:CertificateComponent
