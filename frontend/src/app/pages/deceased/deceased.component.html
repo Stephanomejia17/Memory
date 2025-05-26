@@ -1,21 +1,30 @@
 <div class="container">
-    <form class="perfil">
-        <div class="foto">
-            <h2>PERFIL</h2>
-            <div class="persona"></div>
-            <div class="standard">STANDARD</div>
-        </div>
-
-        <div class="lista">
-            <ng-container *ngFor="let member of members">
-                <button type="button" (click)="onMemberSelect(member)">{{ member.name }}</button>
-            </ng-container>
-        </div>
-    </form>
-
-    <div class="opciones">
-        <a [routerLink]="['/deceased']"><button type="button">Miembros</button></a>
-        <a [routerLink]="['/profile']"><button type="button">Titular</button></a>
-        <a [routerLink]="['/plans']"><button type="button">Plan</button></a>
+  <form class="perfil">
+    <div class="lista-miembros">
+      <div class="miembro">
+        <span>ANGELA</span>
+        <button type="button" class="eliminar">Eliminar</button>
+      </div>
+      <div class="miembro">
+        <span>SOFIA</span>
+        <button type="button" class="eliminar">Eliminar</button>
+      </div>
+      <div class="miembro">
+        <span>ANDRES</span>
+        <button type="button" class="eliminar">Eliminar</button>
+      </div>
+      <div class="miembro">
+        <span>OSCAR</span>
+        <button type="button" class="eliminar">Eliminar</button>
+      </div>
+      <button [routerLink]="['/profile-edit']" type="button" class="agregar">Agregar Miembro</button>
     </div>
+
+  </form>
+
+  <div class="opciones">
+    <a [routerLink]="['/deceased']"><button type="button">Miembros</button></a>
+    <a [routerLink]="['/profile']"><button type="button">Titular</button></a>
+    <a [routerLink]="['/plans']"><button type="button">Plan</button></a>
+  </div>
 </div>

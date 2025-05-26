@@ -1,54 +1,55 @@
-<div class="container">
-    <button type="button" class="salir">X</button>
-    <form class="perfil">
-        <div class="foto">
-            <h2>PERFIL</h2>
-            <div class="persona"></div>
-            <button type="button" class="btn_editar">ACTUALIZAR FOTO</button>
-        </div>
+<body><div class="container">
+    <div class="form-wrapper">
+        <h2>AGREGA MIEMBRO</h2>
+        <form class="perfil">
+            <div class="formulario">
+                <div class="box">
+                    <label for="nombre">Nombre</label>
+                    <input type="text">
+                </div>
+                <div class="box">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text">
+                </div>
+                <div class="box">
+                    <label for="tipo-doc">Tipo de Documento</label>
+                    <select>
+                    <option value="">Seleccionar</option>
+                    <option value="dni">DNI</option>
+                    <option value="ce">Cédula de Extranjería</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+                <div class="box">
+                    <label for="identificación">Identificación</label>
+                    <input type="text">
+                </div>
+                <div class="box">
+                    <label for="email">Email</label>
+                    <input type="email">
+                </div>
+                <div class="box">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" required>
+                </div>
+                <div class="box">
+                    <label for="info1">Celular</label>
+                    <input type="text" required>
+                </div>
+                <div class="box">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" required>
+                </div>
+                <div class="box">
+                    <label for="celular">Ciudad</label>
+                    <input type="tel">
+                </div>
+            </div>
 
-        <div class="formulario">
-            <div class="box">
-                <label for="nombre">Nombre</label>
-                <input type="text">
+            <div class="btn_formulario">
+                <a [routerLink]="['/deceased']"><button type="submit">Guardar</button></a>
+                <a [routerLink]="['/deceased']"><button type="reset">Cancelar</button></a>
             </div>
-            <div class="box">
-                <label for="apellidos">Apellidos</label>
-                <input type="text">
-            </div>
-            <div class="box">
-                <label for="email">Email</label>
-                <input type="email">
-            </div>
-            <div class="box">
-                <label for="contrasena">Contraseña</label>
-                <input type="password">
-            </div>
-            <div class="box">
-                <label for="info1">Info</label>
-                <input type="text">
-            </div>
-            <div class="box">
-                <label for="direccion">Dirección</label>
-                <input type="text">
-            </div>
-            <div class="box">
-                <label for="celular">Celular</label>
-                <input type="tel">
-            </div>
-            <div class="box">
-                <label for="info2">Info</label>
-                <input type="text">
-            </div>
-            <div class="box">
-                <label for="info3">Info</label>
-                <input type="text">
-            </div>
-        </div>
-
-        <div class="btn_formulario">
-            <a [routerLink]="['/profile']"><button type="submit">Guardar</button></a>
-            <a [routerLink]="['/profile']"><button type="reset">Cancelar</button></a>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</div></body>
