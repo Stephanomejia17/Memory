@@ -1,7 +1,7 @@
 <body><div class="container">
     <div class="form-wrapper">
         <h2>AGREGA MIEMBRO</h2>
-        <form class="perfil">
+        <form [formGroup]="profileForm" (ngSubmit)="onSave()" class="perfil">
             <div class="formulario">
                 <div class="box">
                     <label for="nombre">Nombre</label>
@@ -47,8 +47,8 @@
             </div>
 
             <div class="btn_formulario">
-                <a [routerLink]="['/deceased']"><button type="submit">Guardar</button></a>
-                <a [routerLink]="['/deceased']"><button type="reset">Cancelar</button></a>
+                <button type="submit">Guardar</button>
+                <button type="reset" (click)="profileForm.reset()">Cancelar</button>
             </div>
         </form>
     </div>
