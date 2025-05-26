@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Tenor+Sans&display=swap');
 
 body {
-  background: white;
-  font-family: 'Montserrat', sans-serif;
+  background-image: url('/fondoInicioSesion.png');
   background-size: cover;
-  color: #4c5a77;
 }
 
 .container {
 background-color: #edf1f6;
-padding: 30px;
+padding: 15px;
 border-radius: 20px;
 max-width: 600px;
-margin: 30px auto;
+margin: 80px auto -5px;
 box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 font-family: 'Tenor Sans', sans-serif;
 }
@@ -29,6 +27,16 @@ flex-direction: column;
 gap: 15px;
 }
 
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-group label {
+  font-weight: normal;
+}
+
 .campo {
 display: flex;
 flex-direction: column;
@@ -40,6 +48,16 @@ margin-bottom: 5px;
 color: #3a4a67;
 font-size: 14px;
 font-family: 'Montserrat', sans-serif;
+}
+
+.campo select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  color: #4c5a77;
 }
 
 .campo input,
