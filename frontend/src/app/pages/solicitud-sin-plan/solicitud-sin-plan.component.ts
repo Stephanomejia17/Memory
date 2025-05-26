@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SolicitudService } from '../../shared/services/solicitud.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-solicitud-sin-plan',
@@ -57,36 +59,86 @@ export class SolicitudSinPlanComponent implements OnInit {
   }
 
   submitRequest(): void {
+    Swal.fire({
+      title: 'Simulación de Pago',
+      html: `
+        <img src="/pngwing.com.png" alt="Logo o imagen" width="200">
+        <input id="cardNumber" class="swal2-input" placeholder="Número de tarjeta" maxlength="16">
+        <input id="cardName" class="swal2-input" placeholder="Nombre en la tarjeta">
+        <input id="expiry" class="swal2-input" placeholder="MM/AA" maxlength="5">
+        <input id="cvv" class="swal2-input" placeholder="CVV" maxlength="3" type="password">
+        <h2>$ 120.000</h2>
+      `,
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'Pagar',
+      preConfirm: () => {
+        const cardNumber = (document.getElementById('cardNumber') as HTMLInputElement).value;
+        const cardName = (document.getElementById('cardName') as HTMLInputElement).value;
+        const expiry = (document.getElementById('expiry') as HTMLInputElement).value;
+        const cvv = (document.getElementById('cvv') as HTMLInputElement).value;
+        const amount = (document.getElementById('amount') as HTMLInputElement).value;
 
-    const solicitudData = {
-      deceased: {
-        name: this.deceasedName,
-        id: this.deceasedId
-      },
-      requester: {
-        type_id: this.selectedDocType,
-        id: this.requesterId,
-        name: this.requesterName,
-        last_name: this.requesterLastName,
-        email: this.requesterEmail,
-        name_service: 'Servicio Funerario Sin Plan',
-      },
-      serviceDetails: {
-        location: this.selectedLocation,
-        velacionTime: this.selectedVelacionTime,
-        cremacion: this.selectedCremacion,
-        sala: this.selectedSala
+        if (!cardNumber || !cardName || !expiry || !cvv || !amount) {
+          Swal.showValidationMessage('Por favor completa todos los campos');
+          return false;
+        }
+
+        return {
+          cardNumber, cardName, expiry, cvv, amount
+        };
       }
-    };
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Simulamos procesamiento del pago
+        Swal.fire({
+          title: 'Procesando pago...',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        }).then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: '¡Pago exitoso!',
+            text: `Pago simulado de $${result.value.amount} completado.`,
+            confirmButtonText: 'Continuar'
+          }).then(() => {
+            // Si el pago fue exitoso, se envía la solicitud
+            const solicitudData = {
+              deceased: {
+                name: this.deceasedName,
+                id: this.deceasedId
+              },
+              requester: {
+                type_id: this.selectedDocType,
+                id: this.requesterId,
+                name: this.requesterName,
+                last_name: this.requesterLastName,
+                email: this.requesterEmail,
+                name_service: 'Servicio Funerario Sin Plan',
+              },
+              serviceDetails: {
+                location: this.selectedLocation,
+                velacionTime: this.selectedVelacionTime,
+                cremacion: this.selectedCremacion,
+                sala: this.selectedSala
+              }
+            };
 
-    console.log('Datos de la Solicitud sin Plan:', solicitudData);
-    this.solicitudService.enviarSolicitudSinPlan(solicitudData).subscribe({
-      next: () => {
-        this.router.navigate(['/confirm']);
-      },
-      error: (error) => {
-        console.error('Error al enviar la solicitud:', error);
+            this.solicitudService.enviarSolicitudSinPlan(solicitudData).subscribe({
+              next: () => {
+                this.router.navigate(['/confirm']);
+              },
+              error: (error) => {
+                console.error('Error al enviar la solicitud:', error);
+              }
+            });
+          });
+        });
       }
     });
   }
+
 }
