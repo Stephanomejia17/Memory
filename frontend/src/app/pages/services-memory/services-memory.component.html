@@ -15,9 +15,12 @@
         <li>Traslado Urgente</li>
         <li>Proceso de Cremación</li>
         <li>Urna Conmemorativa</li>
-        <p class="precio">$100/ mes</p>
+        <p class="precio">$100.000</p>
       </ul>
-      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
+      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Cremación Inmediata', precio: 100000 }" class="btn_solicitar">
+        Solicitar
+      </a>
+
     </div>
 
     <div class="services">
@@ -27,9 +30,11 @@
         <li>Traslado Urgente</li>
         <li>Sala de Velación</li>
         <li>Ataúd Básico</li>
-        <p class="precio">$125 / mes</p>
+        <p class="precio">$125.000</p>
       </ul>
-      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
+      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Velación Inmediata', precio: 125000 }" class="btn_solicitar">
+        Solicitar
+      </a>
     </div>
 
     <div class="services">
@@ -40,9 +45,11 @@
         <li>Sala de Velación</li>
         <li>Ataúd Personalizado</li>
         <li>Asistencia Psicológica</li>
-        <p class="precio">$150 / mes</p>
+        <p class="precio">$150.000</p>
       </ul>
-      <a [routerLink]="['/payments']" class="btn_solicitar">Solicitar</a>
+      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Servicio Funerario Completo', precio: 150000 }" class="btn_solicitar">
+        Solicitar
+      </a>
     </div>
   </div>
 </section>

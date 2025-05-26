@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SolicitudService } from '../../shared/services/solicitud.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,9 @@ import Swal from 'sweetalert2';
   templateUrl: './solicitud-sin-plan.component.html',
   styleUrls: ['./solicitud-sin-plan.component.css']
 })
+
 export class SolicitudSinPlanComponent implements OnInit {
+  
 
   deceasedName: string = '';
   deceasedId: string = '';
@@ -32,11 +34,19 @@ export class SolicitudSinPlanComponent implements OnInit {
   selectedCremacion: string = 'NO';
   selectedSala: string = 'MONTESACRO';
 
+  nombreServicio: string = '';
+  precioServicio: string = '';
 
-  constructor(private router: Router, private solicitudService: SolicitudService) { }
 
-  ngOnInit(): void {
-  }
+  constructor(private router: Router, private solicitudService: SolicitudService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+  this.route.queryParams.subscribe(params => {
+    this.nombreServicio = params['nombre'] || '';
+    this.precioServicio = params['precio'] || '0';
+    console.log('Servicio:', this.nombreServicio, 'Precio:', this.precioServicio);
+  });
+}
 
   selectOption(group: string, option: string): void {
     switch (group) {
@@ -62,12 +72,13 @@ export class SolicitudSinPlanComponent implements OnInit {
     Swal.fire({
       title: 'Simulación de Pago',
       html: `
+        <h2>Servicio seleccionado: ${ this.nombreServicio }</h2>
         <img src="/pngwing.com.png" alt="Logo o imagen" width="200">
         <input id="cardNumber" class="swal2-input" placeholder="Número de tarjeta" maxlength="16">
         <input id="cardName" class="swal2-input" placeholder="Nombre en la tarjeta">
         <input id="expiry" class="swal2-input" placeholder="MM/AA" maxlength="5">
         <input id="cvv" class="swal2-input" placeholder="CVV" maxlength="3" type="password">
-        <h2>$ 120.000</h2>
+        <h2>$ ${this.precioServicio}</h2>
       `,
       focusConfirm: false,
       showCancelButton: true,
@@ -77,7 +88,7 @@ export class SolicitudSinPlanComponent implements OnInit {
         const cardName = (document.getElementById('cardName') as HTMLInputElement).value;
         const expiry = (document.getElementById('expiry') as HTMLInputElement).value;
         const cvv = (document.getElementById('cvv') as HTMLInputElement).value;
-        const amount = (document.getElementById('amount') as HTMLInputElement).value;
+        const amount = this.precioServicio;
 
         if (!cardNumber || !cardName || !expiry || !cvv || !amount) {
           Swal.showValidationMessage('Por favor completa todos los campos');
