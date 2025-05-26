@@ -1,20 +1,24 @@
 <nav class="navbar">
     <div class="logo">MEMORY</div>
-    <ul class="nav-links">
+
+    <ul class="nav-links" *ngIf="!isLoggedIn()">
       <li><a [routerLink]="['/']" class="active">INICIO</a></li>
       <li><a [routerLink]="['/services-memory']">NUESTROS SERVICIOS</a></li>
       <li><a [routerLink]="['/']" fragment="contact">CONTACTO</a></li>
-   
       <li class="user-menu" (click)=toggleUserMenu($event)>
         <i class="fa-solid fa-user"></i>
-        
-     
-        <ul class="dropdown" *ngIf="showUserMenu && !isLoggedIn()">
+        <ul class="dropdown" *ngIf="showUserMenu ">
           <li><a [routerLink]="['/login']">Iniciar sesión</a></li>
           <li><a [routerLink]="['/sign-up']">Crear cuenta</a></li>
         </ul>
+      </li>
+    </ul>
 
-        <ul class="dropdown" *ngIf="showUserMenu && isLoggedIn()">
+    <ul class="nav-links" *ngIf="isLoggedIn()">
+      <li><a [routerLink]="['/plans']" class="active">INICIO</a></li>
+      <li class="user-menu" (click)="toggleUserMenu($event)">
+        <i class="fa-solid fa-user"></i>
+        <ul class="dropdown" *ngIf="showUserMenu">
           <li><a [routerLink]="['/profile']">Mi perfil</a></li>
           <li><a [routerLink]="['/plans']">Mis planes</a></li>
           <li><a (click)="logout()">Cerrar sesión</a></li>

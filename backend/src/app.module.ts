@@ -23,7 +23,6 @@ import { Service } from './services/service.entity';
       password: '023281012',
       database: 'Memory-BD',
       entities: [User, Plan, Service],
-      dropSchema: true,
       synchronize: true,
     }),
   ],
