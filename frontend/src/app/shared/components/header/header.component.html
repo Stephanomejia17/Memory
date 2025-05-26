@@ -15,7 +15,7 @@
     </ul>
 
     <ul class="nav-links" *ngIf="isLoggedIn()">
-      <li><a [routerLink]="['/plans']" class="active">INICIO</a></li>
+      <li><a [routerLink]="['/deceased']" class="active">INICIO</a></li>
       <li class="user-menu" (click)="toggleUserMenu($event)">
         <i class="fa-solid fa-user"></i>
         <ul class="dropdown" *ngIf="showUserMenu">

@@ -47,7 +47,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         console.log('Respuesta del backend:', res);
-        this.router.navigate(['/plans']);
+        this.router.navigate(['/deceased']);
       },
       error: (err) => {
         console.error('Error al iniciar sesión:', err);
