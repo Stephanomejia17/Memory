@@ -127,19 +127,23 @@ export class UserService {
         
     }
 
-    async solicitarServicioUsuarioNoRegistrado(type_id: string, id: string, name: string, last_name: string, email: string, name_service: string): Promise<User> {
+    async solicitarServicioUsuarioNoRegistrado(requester: any, serviceDetails: any, deceased: any): Promise<User> {
         const user = new User();
         const service = new Service();
     
-        user.type_id = type_id;
-        user.id = id;
-        user.name = name;
-        user.last_name = last_name;
-        user.email = email;
+        user.type_id = requester.type_id;
+        user.id = requester.id;
+        user.name = requester.name;
+        user.last_name = requester.last_name;
+        user.email = requester.email;
 
         const savedUser = await this.userRepository.save(user);
 
-        service.name = name_service;
+        service.name = requester.name_service;
+        service.location = serviceDetails.location;
+        service.velacionTime = serviceDetails.velacionTime;
+        service.cremation = serviceDetails.cremacion;
+        service.sala = serviceDetails.sala;
         service.requestedBy = savedUser;
         service.dateRequested = new Date();
         service.status = 'pendiente';

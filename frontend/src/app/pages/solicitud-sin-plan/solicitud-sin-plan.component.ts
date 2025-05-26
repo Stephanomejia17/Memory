@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SolicitudService } from '../../shared/services/solicitud.service';
 
 @Component({
   selector: 'app-solicitud-sin-plan',
@@ -30,7 +31,7 @@ export class SolicitudSinPlanComponent implements OnInit {
   selectedSala: string = 'MONTESACRO';
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private solicitudService: SolicitudService) { }
 
   ngOnInit(): void {
   }
@@ -56,17 +57,19 @@ export class SolicitudSinPlanComponent implements OnInit {
   }
 
   submitRequest(): void {
+
     const solicitudData = {
       deceased: {
         name: this.deceasedName,
         id: this.deceasedId
       },
       requester: {
-        name: this.requesterName,
-        lastName: this.requesterLastName,
-        docType: this.selectedDocType, 
+        type_id: this.selectedDocType,
         id: this.requesterId,
-        email: this.requesterEmail
+        name: this.requesterName,
+        last_name: this.requesterLastName,
+        email: this.requesterEmail,
+        name_service: 'Servicio Funerario Sin Plan',
       },
       serviceDetails: {
         location: this.selectedLocation,
@@ -77,7 +80,13 @@ export class SolicitudSinPlanComponent implements OnInit {
     };
 
     console.log('Datos de la Solicitud sin Plan:', solicitudData);
-
-    this.router.navigate(['/confirm']);
+    this.solicitudService.enviarSolicitudSinPlan(solicitudData).subscribe({
+      next: () => {
+        this.router.navigate(['/confirm']);
+      },
+      error: (error) => {
+        console.error('Error al enviar la solicitud:', error);
+      }
+    });
   }
 }

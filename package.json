@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "nodemailer": "^7.0.3"
+    "nodemailer": "^7.0.3",
+    "sweetalert2": "^11.22.0"
   }
 }

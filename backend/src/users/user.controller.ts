@@ -74,14 +74,15 @@ export class UserController {
 
     @Post('/solicitarServicioNoRegistrado')
     async solicitarServicioNoRegistrado(@Body() body: any): Promise<User> {
-        if (body.type_id && body.id && body.name && body.last_name && body.email && body.name_service) {
+        const requester = body.requester;
+        const serviceDetails = body.serviceDetails;
+        const deceased = body.deceased;
+
+        if (requester.type_id && requester.id && requester.name && requester.last_name && requester.email && requester.name_service) {
             return this.userService.solicitarServicioUsuarioNoRegistrado(
-                body.type_id,
-                body.id,
-                body.name,
-                body.last_name,
-                body.email,
-                body.name_service,
+                requester,
+                serviceDetails,
+                deceased
             );
         } else {
             throw new BadRequestException('Datos insuficientes para solicitar servicio')

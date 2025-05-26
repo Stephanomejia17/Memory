@@ -19,6 +19,18 @@ export class Service {
   @Column({ default: 'pendiente' })
   status: string;
 
+  @Column({ nullable: true })
+  location: string;
+
+  @Column({ nullable: true })
+  velacionTime: string;
+
+  @Column({ nullable: true })
+  cremation: string;
+
+  @Column({ nullable: true })
+  sala: string;
+
   @Column()
   admin_type_id: string;
 
