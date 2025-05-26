@@ -1,9 +1,28 @@
+<body>
 <div class="container">
 <h2>ACTA DE DEFUNCIÓN</h2>
 <form class="formulario">
     <div class="campo">
     <label>Médico responsable:</label>
     <input type="text" placeholder="Nombre completo" required />
+    </div>
+
+    <div class="campo">
+    <label>Género</label>
+    <div class="radio-group">
+    <label><input type="radio" value="masculino" required> Masculino</label>
+    <label><input type="radio" value="femenino"> Femenino</label>
+    <label><input type="radio" value="otro"> Otro</label>
+    </div></div>
+
+    <div class="campo">
+        <label for="tipo-doc">Tipo de Documento</label>
+        <select required>
+        <option value="">Seleccionar</option>
+        <option value="dni">DNI</option>
+        <option value="ce">Cédula de Extranjería</option>
+        <option value="pasaporte">Pasaporte</option>
+        </select>
     </div>
 
     <div class="campo">
@@ -14,6 +33,24 @@
     <div class="campo">
     <label>Fecha y hora de fallecimiento:</label>
     <input type="datetime-local" required />
+    </div>
+
+    <div class="campo">
+    <label for="direccion">Dirección de fallecimiento</label>
+    <input type="text" required>
+    </div>
+
+    <div class="campo">
+    <label for="religion">Religión</label>
+    <select id="religion" name="religion">
+    <option value="">Seleccionar</option>
+    <option value="catolica">Católica</option>
+    <option value="cristiana">Cristiana</option>
+    <option value="judia">Judía</option>
+    <option value="musulmana">Musulmana</option>
+    <option value="ninguna">Ninguna</option>
+    <option value="otra">Otra</option>
+    </select>
     </div>
 
     <div class="campo">
@@ -34,4 +71,4 @@
 
     <a [routerLink]="['/confirm']"><button type="submit" class="btn_confirmar">Guardar</button></a>
 </form>
-</div>
+</div></body>
