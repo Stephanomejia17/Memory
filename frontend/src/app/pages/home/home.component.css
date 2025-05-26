@@ -24,23 +24,27 @@
 }
 
 .texto {
-    flex: 1;
-    min-width: 280px;
-    text-align: left;
+    background-color: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 800px;
+  width: 100%
 }
-
-.texto h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #98a4b8;
-}
-
 .texto p {
-    font-size: 1.1rem;
-    margin: 1rem 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
     max-width: 500px;
     color: #98a4b8;
+    text-align: justify;
 }
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;}
 
 .texto button {
     margin-top: 1rem;

@@ -23,7 +23,7 @@ export class UserService {
 
     async login(user: User): Promise<User> {
         const foundUser = await this.userRepository.findOne({
-            where: { type_id: user.type_id, id: user.id, password: user.password },
+            where: {type_id: user.type_id, id: user.id, password: user.password },
         });
         if (!foundUser) {
             throw new Error('Invalid credentials');
