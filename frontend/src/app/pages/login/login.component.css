@@ -22,6 +22,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 1200px;
+    margin-top: 50px;
 }
 
 .login-box h2 {
@@ -35,7 +36,7 @@ form {
     flex-direction: column;
     gap: 15px;
     width: 100%;
-    max-width: 400px; /* Limita el ancho del formulario */
+    max-width: 400px;
     margin: 0 auto;
 }
 
