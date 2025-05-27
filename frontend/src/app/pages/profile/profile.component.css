@@ -2,6 +2,7 @@ body {
     box-sizing: border-box;
     font-family: var(font-family);
     height: 100%;
+    background-color: #c7d2e0;
 }
 
 .container {

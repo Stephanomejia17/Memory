@@ -11,10 +11,42 @@ body {
   color: #4c5a77;
 }
 
+.contenedor-planes {
+  background-color: #c7d2e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;  
+}
+
 .container {
-  margin-top: 50px;
-  padding: 3rem 1rem;
-  text-align: center;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.50);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  max-width: 1200px;
+  width: 95%;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: #ffffff;
+  border-radius: 30px;
+  filter: blur(25px);
+  z-index: -1;
+  opacity: 0.6;
 }
 
 .container h1 {
@@ -38,6 +70,8 @@ body {
   width: 300px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan:hover {
@@ -49,13 +83,16 @@ body {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #3a4a67;
+  text-align: center;
 }
 
 .precio {
   font-size: 1.3rem;
   font-weight: bold;
   color: #607ea6;
-  margin-bottom: 1.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.1rem;
+  text-align: center;
 }
 
 .caracteristicas {
@@ -63,7 +100,12 @@ body {
   list-style: none;
   padding-left: 0;
   margin-bottom: 2rem;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+}
+
+.caracteristicas p {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .caracteristicas li {
@@ -79,6 +121,13 @@ body {
   color: #90a0b7;
 }
 
+.precio {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #607ea6;
+  margin-bottom: 0.05rem;
+}
+
 .btn_afiliacion {
   display: inline-block;
   padding: 0.7rem 1.5rem;
@@ -89,6 +138,8 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s;
+  margin-top: auto;
+  align-self: center;
 }
 
 .btn_afiliacion:hover {

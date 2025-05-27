@@ -1,55 +1,63 @@
 <section class="container">
-  <div class="banner">
-    <h1>Servicios Inmediatos</h1>
-    <p class="descripcion">
-      En Memory, entendemos que la pérdida de un ser querido es un momento delicado y doloroso. Por eso, ofrecemos servicios inmediatos para garantizar que cada detalle sea atendido con el máximo respeto y profesionalismo.
-      Nuestro equipo está disponible las 24 horas del día, listo para brindarte el apoyo que necesitas en estos momentos difíciles.
-    </p>
-  </div>
-
-  <div class="services-container">
-    <div class="services">
-      <h2>Cremación Inmediata</h2>
-      <ul class="caracteristicas">
-        <p>Una opción digna y eficiente para la cremación, con atención prioritaria y discreción.</p><br>
-        <li>Traslado Urgente</li>
-        <li>Proceso de Cremación</li>
-        <li>Urna Conmemorativa</li>
-        <p class="precio">$100.000</p>
-      </ul>
-      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Cremación Inmediata', precio: 100000 }" class="btn_solicitar">
-        Solicitar
-      </a>
-
+  <section class="contenedor-servicios">
+    <div class="banner">
+      <h1>Servicios Inmediatos</h1>
+      <p class="descripcion">
+        En Memory, entendemos que la pérdida de un ser querido es un momento delicado y doloroso. Por eso, ofrecemos
+        servicios inmediatos para garantizar que cada detalle sea atendido con el máximo respeto y profesionalismo.
+        Nuestro equipo está disponible las 24 horas del día, listo para brindarte el apoyo que necesitas en estos
+        momentos difíciles.
+      </p>
     </div>
 
-    <div class="services">
-      <h2>Velación Inmediata</h2>
-      <ul class="caracteristicas">
-        <p> Un espacio breve pero significativo para una despedida íntima y respetuosa en poco tiempo.</p><br>
-        <li>Traslado Urgente</li>
-        <li>Sala de Velación</li>
-        <li>Ataúd Básico</li>
-        <p class="precio">$125.000</p>
-      </ul>
-      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Velación Inmediata', precio: 125000 }" class="btn_solicitar">
-        Solicitar
-      </a>
-    </div>
+    <div class="services-container">
+      <div class="services">
+        <h2>Cremación Inmediata</h2>
+        <ul class="caracteristicas">
+          <p class="precio">$99.999</p>
+          <p>Una opción digna y eficiente para la cremación, con atención prioritaria y discreción.</p><br>
+          <li>Traslado Urgente</li>
+          <li>Proceso de Cremación</li>
+          <li>Urna Conmemorativa</li>
+        </ul>
+        <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar"
+          [queryParams]="{ nombre: 'Cremación Inmediata', precio: 100000 }" class="btn_solicitar">
+          Solicitar
+        </a>
 
-    <div class="services">
-      <h2>Servicio Funerario Completo</h2>
-      <ul class="caracteristicas">
-        <p>Un servicio integral que abarca todos los aspectos necesarios para un homenaje completo y respetuoso.</p><br>
-        <li>Traslado Urgente</li>
-        <li>Sala de Velación</li>
-        <li>Ataúd Personalizado</li>
-        <li>Asistencia Psicológica</li>
-        <p class="precio">$150.000</p>
-      </ul>
-      <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar" [queryParams]="{ nombre: 'Servicio Funerario Completo', precio: 150000 }" class="btn_solicitar">
-        Solicitar
-      </a>
+      </div>
+
+      <div class="services">
+        <h2>Velación Inmediata</h2>
+        <ul class="caracteristicas">
+          <p class="precio">$129.999</p>
+          <p> Un espacio breve pero significativo para una despedida íntima y respetuosa en poco tiempo.</p><br>
+          <li>Traslado Urgente</li>
+          <li>Sala de Velación</li>
+          <li>Ataúd Básico</li>
+        </ul>
+        <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar"
+          [queryParams]="{ nombre: 'Velación Inmediata', precio: 125000 }" class="btn_solicitar">
+          Solicitar
+        </a>
+      </div>
+
+      <div class="services">
+        <h2>Servicio Completo</h2>
+        <ul class="caracteristicas">
+          <p class="precio">$149.999</p>
+          <p>Un servicio integral que abarca todos los aspectos necesarios para un homenaje completo y respetuoso.</p>
+          <br>
+          <li>Traslado Urgente</li>
+          <li>Sala de Velación</li>
+          <li>Ataúd Personalizado</li>
+          <li>Asistencia Psicológica</li>
+        </ul>
+        <a [routerLink]="['/solicitud-sin-plan']" class="btn_solicitar"
+          [queryParams]="{ nombre: 'Servicio Funerario Completo', precio: 150000 }" class="btn_solicitar">
+          Solicitar
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
 </section>

@@ -1,47 +1,53 @@
-<section class="container">
-  <h1>ELIGE TU PLAN</h1>
+<section class="contenedor-planes">
+  <section class="container">
+    <h1>ELIGE TU PLAN</h1>
 
-  <div class="planes">
-    <div class="plan">
-      <h2>Luz Serena</h2>
-      <p class="precio">$7.99 / mes</p>
-      <ul class="caracteristicas">
-        <p>Un servicio esencial y respetuoso, que ofrece lo fundamental con calidez</p><br>
-        <li>Traslado del ser querido</li>
-        <li>Acondicionamiento básico</li>
-        <li>Sala de velación estándar por 24 horas o servicio de velación en domicilio</li>
-        <li>Ataúd o urna básica para cremación</li>
-      </ul>
+    <div class="planes">
+      <div class="plan">
+        <h2>Luz Serena</h2>
+        <p class="precio">$119.999 / mes</p>
+        <ul class="caracteristicas">
+          <p>Un servicio esencial y respetuoso, que ofrece lo fundamental con calidez</p><br>
+          <li>Traslado del ser querido</li>
+          <li>Acondicionamiento básico</li>
+          <li>Sala de velación estándar por 24 horas o servicio de velación en domicilio</li>
+          <li>Ataúd o urna básica para cremación</li>
+        </ul>
 
-      <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion" [queryParams]="{ name: 'Luz Serena'}">Afiliarme</a>
+        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
+          [queryParams]="{ name: 'Luz Serena'}">Afiliarme</a>
+      </div>
+
+      <div class="plan">
+        <h2>Recuerdo Eterno</h2>
+        <p class="precio">$159.999 / mes</p>
+        <ul class="caracteristicas">
+          <p>Una opción completa y sensible, que permite un homenaje más personalizado y significativo.</p><br>
+          <li>Todos los beneficios del Plan "Luz Serena"</li>
+          <li>Mejora de Ataúd o Urna</li>
+          <li>Asistencia Psicológica</li>
+          <li>Servicio Floral</li>
+        </ul>
+        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
+          [queryParams]="{ name: 'Recuerdo Eterno'}">Afiliarme</a>
+      </div>
+
+      <div class="plan">
+        <h2>Legado Viviente</h2>
+        <p class="precio">$179.999 / mes</p>
+        <ul class="caracteristicas">
+          <p>Diseñado para quienes desean un homenaje totalmente personalizado, un legado duradero y un acompañamiento
+            integral.</p><br>
+          <li>Todos los beneficios del Plan "Recuerdo Eterno"</li>
+          <li>Servicio de Café/Refrigerios</li>
+          <li>Servicio de Ceremonia Conmemorativa</li>
+          <li>Acompañamiento Psicológico Continuo</li>
+        </ul>
+        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
+          [queryParams]="{ name: 'Legado Viviente'}">Afiliarme</a>
+      </div>
+
+
     </div>
-
-    <div class="plan">
-      <h2>Recuerdo Eterno</h2>
-      <p class="precio">$13.99 / mes</p>
-      <ul class="caracteristicas">
-        <p>Una opción completa y sensible, que permite un homenaje más personalizado y significativo.</p><br>
-        <li>Todos los beneficios del Plan "Luz Serena"</li>
-        <li>Mejora de Ataúd o Urna</li>
-        <li>Asistencia Psicológica</li>
-        <li>Servicio Floral</li>
-      </ul>
-      <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion" [queryParams]="{ name: 'Recuerdo Eterno'}">Afiliarme</a>
-    </div>
-
-    <div class="plan">
-      <h2>Legado Viviente</h2>
-      <p class="precio">$16.99 / mes</p>
-      <ul class="caracteristicas">
-        <p>Diseñado para quienes desean un homenaje totalmente personalizado, un legado duradero y un acompañamiento integral.</p><br>
-        <li>Todos los beneficios del Plan "Recuerdo Eterno"</li>
-        <li>Servicio de Café/Refrigerios</li>
-        <li>Servicio de Ceremonia Conmemorativa</li>
-        <li>Acompañamiento Psicológico Continuo</li>
-      </ul>
-        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion" [queryParams]="{ name: 'Legado Viviente'}">Afiliarme</a>
-    </div> 
-
-  
-  </div>
+  </section>
 </section>

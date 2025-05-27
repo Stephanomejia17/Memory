@@ -1,18 +1,36 @@
 <app-header></app-header>
-<section class="carrusel">
-    <div class="contenido-carrusel">
 
-        <h2>¿Quiénes somos?</h2>
-        <img src="/logo.jpeg" alt="Logo Memory" class="logo-memory">
-        <p>
-          En Memory, creemos que el amor trasciende. Nos dedicamos a brindarte un
-          espacio de conexión profunda y bella con aquellos que han partido. Un
-          servicio donde los recuerdos se transforman en un legado de cariño,
-          permitiéndote honrar su memoria y mantener viva su esencia en tu corazón.
-        </p>
+<section class="home">
+  <div class="carousel-images-container">
+    <div
+      *ngFor="let img of backgroundImages; let i = index"
+      class="carousel-image"
+      [style.backgroundImage]="'url(' + img + ')'"
+      [class.active]="i === currentIndex"
+    ></div>
+  </div>
 
-        <button [routerLink]="['/sign-up']">ADQUIERE TUS BENEFICIOS</button>
+  <div class="home-content">
+    <h2>Memory</h2>
+    <button [routerLink]="['/sign-up']">ADQUIERE TUS BENEFICIOS</button>
+  </div>
+</section>
+
+<section class="quienes-somos">
+  <div class="quienes-somos-contenido">
+    <div class="quienes-somos-texto">
+      <h2>¿Quiénes somos?</h2>
+      <p>
+        En Memory, creemos que el amor trasciende. Nos dedicamos a brindarte un
+        espacio de conexión profunda y bella con aquellos que han partido. Un
+        servicio donde los recuerdos se transforman en un legado de cariño,
+        permitiéndote honrar su memoria y mantener viva su esencia en tu corazón.
+      </p>
+      </div>
+    <div class="quienes-somos-imagen">
+      <img src="/logo.jpeg" alt="Logo Memory" class="logo-memory">
     </div>
+  </div>
 </section>
 
 <div class="services-container" id="services">

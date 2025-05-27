@@ -6,10 +6,40 @@
   align-items: center;
 }
 
+.contenedor-servicios {
+  position: relative;
+  background-color: #c7d2e0;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  min-height: 800px;
+  max-width: 1100px;
+  width: 95%;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.contenedor-servicios::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: #c7d2e0;
+  border-radius: 30px;
+  filter: blur(25px);
+  z-index: -1;
+  opacity: 0.6;
+}
 
 .banner {
   max-width: 800px;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .banner h1 {
@@ -20,7 +50,7 @@
 }
 
 .descripcion {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: #4c5a77;
 }
 
@@ -41,6 +71,8 @@
   width: 250px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 .services:hover {
@@ -57,7 +89,8 @@
 
 .services p {
   margin-bottom: 1.5rem;
-  font-size: 0.95rem;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
   text-align: center;
 }
 
@@ -66,7 +99,7 @@
   list-style: none;
   padding-left: 0;
   margin-bottom: 2rem;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .caracteristicas li {
@@ -83,7 +116,7 @@
 }
 
 .precio {
-  font-size: 2rem;
+  font-size: 2.0rem;
   font-weight: bold;
   color: #607ea6;
   margin-bottom: 1.5rem;
@@ -99,6 +132,8 @@
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s;
+  margin-top: auto;
+  align-self: center;
 }
 
 .btn_solicitar:hover {
