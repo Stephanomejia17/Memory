@@ -1,6 +1,5 @@
 <app-header></app-header>
 <main class="login-container">
-    <h1 class="title">MEMORY</h1>
     <section class="login-box">
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <h2>INICIAR SESIÓN</h2>
@@ -18,7 +17,9 @@
             <input type="password" id="password" formControlName="password" placeholder="-------------------------" />
 
             <button type="submit" class="btn-login">INICIAR</button>
-            <a [routerLink]="['/sign-up']" class="link-create">Crear cuenta</a>
+            <div class="login-create">
+                <a [routerLink]="['/sign-up']">Crear cuenta</a>
+            </div>
         </form>
     </section>
 </main>
