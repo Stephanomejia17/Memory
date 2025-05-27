@@ -161,5 +161,24 @@ export class PlanService {
         return plan;
     }
 
-    
+    async findAllByUser(user: { type_id: string; id: string }): Promise<Plan> {
+        const userEntity = await this.userRepository.findOne({
+          where: {
+            type_id: user.type_id,
+            id: user.id,
+          },
+          relations: ['plan'],
+        });
+      
+        if (!userEntity) {
+          throw new NotFoundException('User not found');
+        }
+      
+        if (!userEntity.plan) {
+          throw new NotFoundException('No plan found for this user');
+        }
+      
+        return userEntity.plan;
+      }
+      
 }

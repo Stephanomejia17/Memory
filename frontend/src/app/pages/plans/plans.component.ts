@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
+import { PaymentService } from '../../shared/services/payment.service';
 @Component({
   selector: 'app-plans',
   standalone: true,
@@ -9,4 +11,25 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./plans.component.css']
 })
 export class PlansComponent { 
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private paymentService: PaymentService,) { 
+  }
+
+  verifyPlan() { 
+    console.log('Verificando plan activo...');
+    this.paymentService.verifyPlan().subscribe();
+    
+  }
+
+  SolicitarPlan() {
+    console.log('Botón de Solicitar Plan clickeado.');
+    if (this.authService.isLoggedUser()) {
+      console.log('Usuario logeado. Redirigiendo a /payment');
+      this.router.navigate(['/payment']);
+    }
+
+}
 }
