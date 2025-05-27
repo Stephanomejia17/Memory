@@ -406,3 +406,39 @@
         margin-bottom: 20px;
     }
 }
+/* SOLO AGREGARÉ ESTE NUEVO CONTENEDOR */
+.profile-form-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: calc(100% - 40px);
+}
+
+/* EL RESTO DEL CSS PERMANECE EXACTAMENTE IGUAL */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e1ebf5; /* Fondo azul claro */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.top-bar {
+    background-color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-height: 60px;
+}
+

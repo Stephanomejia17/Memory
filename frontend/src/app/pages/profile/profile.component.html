@@ -3,7 +3,6 @@
         <div class="foto">
             <h2>PERFIL</h2>
             <div class="persona"></div>
-            <a [routerLink]="['/profile-edit']"><button type="button" class="btn_editar">EDITAR</button></a>
         </div>
 
         <div class="formulario">
@@ -39,15 +38,14 @@
                 <label for="info2">Info</label>
                 <input type="text">
             </div>
-            <div class="box">
-                <label for="info3">Info</label>
-                <input type="text">
-            </div>
+
         </div>
 
         <div class="btn_formulario">
             <button type="submit">Guardar</button>
             <button type="reset">Cancelar</button>
+            <a [routerLink]="['/profile-edit']"><button type="button" class="btn_editar">EDITAR</button></a>
+
         </div>
     </form>
 
