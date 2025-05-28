@@ -51,4 +51,9 @@ export class PlanController {
         return this.planService.removeMember(planData);
     }
 
+    @Get(':id/members')
+    async getMembers(@Param('id') planId: number) {
+        return this.planService.getPlanMembers(planId);
+    }
+
 }

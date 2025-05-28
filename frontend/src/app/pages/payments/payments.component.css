@@ -1,16 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Tenor+Sans&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0%;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: white;
   background-size: cover;
-  color: #4c5a77;
+  background-image: url('/fondoInicioSesion.png');
 }
 
 .container {
@@ -45,11 +43,13 @@ body {
 .resumen h2, .resumen p {
   font-size: 1rem;
   color: #4c5a77;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .resumen span {
   font-weight: bold;
   color: #3b5998;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formulario {
@@ -62,6 +62,7 @@ body {
   margin-bottom: 0.4rem;
   font-size: 0.95rem;
   color: #3a4a67;
+  font-family: 'Tenor Sans', sans-serif;
 }
 
 .formulario input {
@@ -71,10 +72,12 @@ body {
   background-color: #f8f9fb;
   color: #4c5a77;
   font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formulario input::placeholder {
   color: #a0aaba;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formulario button {
@@ -87,8 +90,10 @@ body {
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Tenor Sans', sans-serif;
 }
 
 .formulario button:hover {
   background-color: #8d9aad;
+  font-family: 'Tenor Sans', sans-serif;
 }
