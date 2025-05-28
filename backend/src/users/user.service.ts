@@ -25,6 +25,7 @@ export class UserService {
         const foundUser = await this.userRepository.findOne({
             where: {type_id: user.type_id, id: user.id, password: user.password },
         });
+        console.log(foundUser)
         if (!foundUser) {
             throw new Error('Invalid credentials');
         }

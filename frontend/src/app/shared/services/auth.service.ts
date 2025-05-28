@@ -17,7 +17,7 @@ export class AuthService {
   router = inject(Router);
 
   LoggedUser() {
-    return this.isLoggedUser(); // Retorna el estado de isLoggedUser como un signal
+    return this.isLoggedUser(); 
   }
 
   
@@ -42,8 +42,18 @@ export class AuthService {
     sessionStorage.removeItem('userLogged');
     sessionStorage.clear();
     this.isLoggedUser.set(false);
-    this.showSuccess('Sesión cerrada exitosamente');
-    this.router.navigate(['/']);
+
+    this.http.post(`${this.apiUrl}/users/logout`, null, {
+      withCredentials: true
+    }).subscribe({
+      next: () => {
+        this.showSuccess('Sesión cerrada exitosamente');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error('Error cerrando sesión', err);
+      }
+    });
   
   }
 

@@ -27,9 +27,16 @@ export class PaymentsComponent {
     });
   }
 
+  verifyPlan() { 
+    console.log('Verificando plan activo...');
+    this.paymentService.verifyPlan().subscribe();
+
+  }
+
  
 
   submitRequest() {
+    this.verifyPlan();
    
     const data = {
       nombrePlan: this.nombrePlan

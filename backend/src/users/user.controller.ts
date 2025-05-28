@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Delete, UseGuards, Put, BadRequestException, Req, Res} from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import {Request,Response} from 'express'
+import { Request, Response } from 'express';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 
@@ -29,6 +29,7 @@ export class UserController {
 
     @Post("/login")
     async login(@Body() user: User, @Req() req: Request, @Res() res: Response): Promise<void> {
+        console.log(user)
         try {
         const userLogged = await this.userService.login(user);
 
@@ -51,6 +52,7 @@ export class UserController {
         }
         catch(error){
             console.log(error)
+            res.status(100).send(error)
         }
         
     }
@@ -88,6 +90,19 @@ export class UserController {
             throw new BadRequestException('Datos insuficientes para solicitar servicio')
         }
     }
+
+    @Post('/logout')
+    logout(@Req() req: Request, @Res() res: Response) {
+        req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error cerrando sesión' });
+        }
+
+        res.clearCookie('connect.sid'); 
+        res.status(200).json({ message: 'Logout exitoso' });
+        console.log("Logout :)")
+  });
+}
 
     
 

@@ -18,11 +18,6 @@ export class PlansComponent {
     private paymentService: PaymentService,) { 
   }
 
-  verifyPlan() { 
-    console.log('Verificando plan activo...');
-    this.paymentService.verifyPlan().subscribe();
-    
-  }
 
   SolicitarPlan() {
     console.log('Botón de Solicitar Plan clickeado.');
