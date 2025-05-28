@@ -4,6 +4,17 @@ import { Repository } from 'typeorm';
 import { Plan } from './plan.entity';
 import { User } from 'src/users/user.entity';
 
+export interface ApiMember {
+  type_id: string;
+  id: string;
+  name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+}
+
 @Injectable()
 export class PlanService {
     constructor(
@@ -179,6 +190,31 @@ export class PlanService {
         }
       
         return userEntity.plan;
-      }
+    }
+
+    async getPlanMembers(planId: number): Promise<ApiMember[]> {
+        const plan = await this.planRepository.findOne({
+            where: { id: planId },
+            relations: ['members', 'admin']
+        });
+        if (!plan) {
+            throw new NotFoundException('Plan not found');
+        }
+        const allMembers = plan.members || [];
+        if (plan.admin) {
+            allMembers.push(plan.admin);
+        }
+        return (plan.members || []).map(member => ({
+            type_id: member.type_id,
+            id: member.id,
+            name: member.name,
+            last_name: member.last_name,
+            email: member.email,
+            phone: member.phone || 'N/A',
+            address: member.address || 'N/A',
+            city: member.city || 'N/A',
+            planType: 'STANDARD'
+        }));
+    }
       
 }

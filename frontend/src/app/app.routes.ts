@@ -44,6 +44,10 @@ export const routes: Routes = [
         component:DeceasedComponent
     },
     { 
+        path: 'plans/:planId/members',
+        component: DeceasedComponent 
+    },
+    { 
         path:'plans',
         component:PlansComponent
     },

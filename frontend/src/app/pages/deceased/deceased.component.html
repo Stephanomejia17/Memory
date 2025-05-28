@@ -1,20 +1,8 @@
 <div class="container">
   <form class="perfil">
     <div class="lista-miembros">
-      <div class="miembro">
-        <span>ANGELA</span>
-        <button type="button" class="eliminar">Eliminar</button>
-      </div>
-      <div class="miembro">
-        <span>SOFIA</span>
-        <button type="button" class="eliminar">Eliminar</button>
-      </div>
-      <div class="miembro">
-        <span>ANDRES</span>
-        <button type="button" class="eliminar">Eliminar</button>
-      </div>
-      <div class="miembro">
-        <span>OSCAR</span>
+      <div class="miembro" *ngFor="let member of members">
+        <span>{{ member.name }} {{ member.last_name }}</span>
         <button type="button" class="eliminar">Eliminar</button>
       </div>
       <button [routerLink]="['/profile-edit']" type="button" class="agregar">Agregar Miembro</button>

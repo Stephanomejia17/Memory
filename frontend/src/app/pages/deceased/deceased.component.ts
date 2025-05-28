@@ -1,35 +1,73 @@
-import { Component, OnInit } from '@angular/core'; 
-import { Router, RouterLink } from '@angular/router'; 
-import { CommonModule } from '@angular/common'; 
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
-export interface Member {
-  id: number;
+const API_BASE_URL = 'http://localhost:3000';
+
+export interface ApiMember {
+  type_id: string;
+  id: string;
   name: string;
-  planType: 'STANDARD' | 'PREMIUM' | 'BASIC'; 
+  last_name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+}
+
+export interface Member extends ApiMember {
+  planType: 'STANDARD' | 'PREMIUM' | 'BASIC';
 }
 
 @Component({
   selector: 'app-deceased',
   standalone: true,
-  imports: [CommonModule, RouterLink], 
+  imports: [CommonModule, RouterLink],
   templateUrl: './deceased.component.html',
   styleUrl: './deceased.component.css'
 })
-export class DeceasedComponent implements OnInit { 
+export class DeceasedComponent implements OnInit {
+  members: Member[] = [];
+  currentPlanId: number | null = null;
 
-  members: Member[] = []; 
-
-  constructor(private router: Router) { } 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
+  this.route.paramMap.subscribe(params => {
+    this.currentPlanId = Number(params.get('planId'));
+    
+    if (!this.currentPlanId) {
+      this.members = [];
+      return;
+    }
 
-    this.members = [
-      { id: 1, name: 'ANGELA', planType: 'STANDARD' },
-      { id: 2, name: 'SOFIA', planType: 'PREMIUM' }, 
-      { id: 3, name: 'ANDRES', planType: 'STANDARD' },
-  
-    ];
-  }
+    this.loadMembers(this.currentPlanId);
+  });
+}
+
+  loadMembers(planId: number): void {
+    this.http.get<ApiMember[]>(`${API_BASE_URL}/plans/${planId}/members`).subscribe({
+      next: (apiMembers) => {
+        this.members = apiMembers.map(member => ({
+        ...member,
+        planType: this.determinePlanType(member)
+      }));
+    },
+    error: (error) => {
+      console.error('Error cargando miembros:', error);
+    }
+  });
+}
+
+  private determinePlanType(member: any): 'STANDARD' | 'PREMIUM' | 'BASIC' {
+    return 'STANDARD';
+}
 
   onMemberSelect(member: Member): void {
     console.log('Miembro seleccionado:', member.name, 'Tipo de plan:', member.planType);
