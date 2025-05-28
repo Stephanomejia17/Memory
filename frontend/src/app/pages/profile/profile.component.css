@@ -192,3 +192,23 @@
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
+
+.opciones button {
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.6rem 1.5rem;
+    font-weight: bold;
+    box-shadow: 2px 3px 0px #9ba2b0;
+    cursor: pointer;
+    color: #1f2a77;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.2s;
+    min-width: 120px;
+    text-align: center;
+}
+
+.opciones button:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 4px 5px #9ba2b0;
+}
