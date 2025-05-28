@@ -44,7 +44,13 @@ export class UserController {
             type_id: userLogged.type_id,
             id: userLogged.id,
             name: userLogged.name,
-            lastname: userLogged.last_name
+            lastname: userLogged.last_name,
+            password:userLogged.password,
+            email: userLogged.email,
+            phone: userLogged.phone,
+            adress:userLogged.address,
+            city: userLogged.city,
+
         };
         console.log(req.session.user)
         res.status(200).send({ message: 'Login successful' });
@@ -56,6 +62,13 @@ export class UserController {
         }
         
     }
+
+    @Get('/get')
+    getSession(@Req() req: Request) {
+        console.log(req.session)
+        return req.session;
+    }
+
 
     @Post("/adquirirPlan")
     async adquirirPlan(@Body() user: User): Promise<User> {

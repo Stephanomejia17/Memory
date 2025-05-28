@@ -8,6 +8,11 @@ declare module 'express-session' {
             id: string;
             name: string;
             lastname: string;
+            password: string;
+            email:string;
+            phone: string;
+            adress: string;
+            city: string;
         };
     }
 }

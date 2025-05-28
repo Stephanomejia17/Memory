@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="perfil">
+    <form [formGroup]="perfilForm" class="perfil">
         <div class="foto">
             <h2>PERFIL</h2>
             <div class="persona"></div>
@@ -8,44 +8,36 @@
         <div class="formulario">
             <div class="box">
                 <label for="nombre">Nombre</label>
-                <input type="text">
+                <input formControlName="name" type="text">
             </div>
             <div class="box">
                 <label for="apellidos">Apellidos</label>
-                <input type="text">
+                <input formControlName="lastname" type="text">
             </div>
             <div class="box">
                 <label for="email">Email</label>
-                <input type="email">
+                <input formControlName="email" type="email">
             </div>
             <div class="box">
                 <label for="contrasena">Contraseña</label>
-                <input type="password">
+                <input formControlName="password" type="password">
             </div>
             <div class="box">
-                <label for="info1">Info</label>
-                <input type="text">
-            </div>
-            <div class="box">
-                <label for="direccion">Dirección</label>
-                <input type="text">
+                <label for="id">Identificación</label>
+                <input formControlName="id" type="text">
             </div>
             <div class="box">
                 <label for="celular">Celular</label>
-                <input type="tel">
+                <input formControlName="phone" type="tel">
             </div>
             <div class="box">
-                <label for="info2">Info</label>
-                <input type="text">
+                <label for="direccion">Dirección</label>
+                <input formControlName="adress" type="text">
             </div>
-
         </div>
 
         <div class="btn_formulario">
             <button type="submit">Guardar</button>
-            <button type="reset">Cancelar</button>
-            <a [routerLink]="['/profile-edit']"><button type="button" class="btn_editar">EDITAR</button></a>
-
         </div>
     </form>
 

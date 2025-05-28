@@ -75,7 +75,11 @@ export class AuthService {
     });
   }
 
-
+  getProfile(): Observable<any> {
+    const user =this.http.get(`${this.apiUrl}/users/get`)
+    console.log("HHHH",user)
+    return user
+  }
 
   private showError(message: string): void {
     Swal.fire({
