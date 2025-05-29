@@ -39,31 +39,41 @@ export class DeceasedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  this.route.paramMap.subscribe(params => {
-    this.currentPlanId = Number(params.get('planId'));
-    
-    if (!this.currentPlanId) {
-      this.members = [];
-      return;
-    }
+    this.getCurrentUserPlanIdAndLoadMembers();
+  }
 
-    this.loadMembers(this.currentPlanId);
-  });
-}
+  getCurrentUserPlanIdAndLoadMembers(): void {
+    this.http.get<{ planId: number }>(`${API_BASE_URL}/users/planId`).subscribe({
+      next: (data) => {
+        this.currentPlanId = data.planId;
+        console.log('Plan ID obtenido:', this.currentPlanId);
+        if (this.currentPlanId) {
+          this.loadMembers(this.currentPlanId);  // PASAR planId aquí
+        } else {
+          console.warn('Plan ID no válido');
+        }
+      },
+      error: (error) => {
+        console.error('Error al obtener el plan del usuario:', error);
+        alert('No se pudo obtener el plan del usuario actual.');
+      }
+    });
+  }
 
   loadMembers(planId: number): void {
     this.http.get<ApiMember[]>(`${API_BASE_URL}/plans/${planId}/members`).subscribe({
       next: (apiMembers) => {
         this.members = apiMembers.map(member => ({
-        ...member,
-        planType: this.determinePlanType(member)
-      }));
-    },
-    error: (error) => {
-      console.error('Error cargando miembros:', error);
-    }
-  });
-}
+          ...member,
+          planType: this.determinePlanType(member)
+        }));
+      },
+      error: (error) => {
+        console.error('Error cargando miembros:', error);
+      }
+    });
+  }
+
 
   private determinePlanType(member: any): 'STANDARD' | 'PREMIUM' | 'BASIC' {
     return 'STANDARD';

@@ -199,16 +199,20 @@ export class PlanService {
     async getPlanMembers(planId: number): Promise<ApiMember[]> {
         const plan = await this.planRepository.findOne({
             where: { id: planId },
-            relations: ['members', 'admin']
+            relations: ['members', 'admin'],
         });
+
         if (!plan) {
             throw new NotFoundException('Plan not found');
         }
-        const allMembers = plan.members || [];
-        if (plan.admin) {
+
+        const allMembers = [...(plan.members || [])];
+
+        if (plan.admin && !allMembers.some(m => m.id === plan.admin.id && m.type_id === plan.admin.type_id)) {
             allMembers.push(plan.admin);
         }
-        return (plan.members || []).map(member => ({
+
+        return allMembers.map(member => ({
             type_id: member.type_id,
             id: member.id,
             name: member.name,
@@ -217,8 +221,9 @@ export class PlanService {
             phone: member.phone || 'N/A',
             address: member.address || 'N/A',
             city: member.city || 'N/A',
-            planType: 'STANDARD'
+            planType: 'STANDARD',
         }));
     }
+
       
 }
