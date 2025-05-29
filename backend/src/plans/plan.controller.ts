@@ -56,4 +56,13 @@ export class PlanController {
         return this.planService.getPlanMembers(planId);
     }
 
+    @Delete("/delete")
+    async deletePlan(@Req() req: Request) {
+    const user = req.session?.user;
+    if (!user) {
+      throw new Error('User not authenticated in session');
+    }
+    return await this.planService.deletePlan(user);
+  }
+
 }

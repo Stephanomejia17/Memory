@@ -216,5 +216,25 @@ export class PlanService {
             planType: 'STANDARD'
         }));
     }
+
+    async deletePlan(user: { type_id: string; id: string }) {
+        const plan = await this.planRepository.findOne({
+          where: {
+            admin: {
+              type_id: user.type_id,
+              id: user.id,
+            },
+          },
+          relations: ['admin'],
+        });
+      
+        if (!plan) {
+          throw new NotFoundException('Plan not found for the given user');
+        }
+        console.log(plan.id)
+        await this.planRepository.delete(plan.id);
+        console.log('BORRO')
+      }
+      
       
 }
