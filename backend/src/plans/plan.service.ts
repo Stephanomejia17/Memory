@@ -62,45 +62,49 @@ export class PlanService {
         return plan;
     }
 
-    async addMember(planData: { id: number; member: { type_id: string; id: string } }): Promise<any> {
+    async addMember(planData: {id: number; member: { type_id: string; id: string; name: string; last_name: string; email: string; password: string; phone: string; address: string; city: string;}; }): Promise<any> {
         const plan = await this.planRepository.findOne({
             where: { id: planData.id },
             relations: ['members'],
-        })
-        const member = await this.userRepository.findOne({
-            where: {
-                type_id: planData.member.type_id,
-                id: planData.member.id,
-            },
         });
-
-        if (!member) {
-            throw new NotFoundException('Member user not found');
-        }
-
-        if (member.plan) {
-            throw new Error('Member already has a plan assigned');
-        }
 
         if (!plan) {
             throw new NotFoundException('Plan not found');
         }
-        
-        member.plan = plan;
 
-        plan.members = plan.members || [];
-        plan.members.push(member);
+        const existingMember = await this.userRepository.findOne({
+            where: {
+            type_id: planData.member.type_id,
+            id: planData.member.id,
+            },
+        });
 
-        await this.userRepository.save(member);
+        if (existingMember) {
+            throw new Error('Member with this type_id and id already exists');
+        }
+
+        const newMember = this.userRepository.create({
+            type_id: planData.member.type_id,
+            id: planData.member.id,
+            name: planData.member.name,
+            last_name: planData.member.last_name,
+            email: planData.member.email,
+            password: planData.member.password,
+            phone: planData.member.phone,
+            address: planData.member.address,
+            city: planData.member.city,
+            plan: plan,
+        });
+
+        await this.userRepository.save(newMember);
 
         return {
-            message: 'Member added successfully',
-            memberId: member.id,
+            message: 'Member created and added to plan successfully',
+            memberId: newMember.id,
             planId: plan.id,
         };
-          
-          
     }
+
 
     async removeMember(planData: { id: number; member: { type_id: string; id: string } }): Promise<any> {
         if (!planData?.member?.type_id || !planData?.member?.id) {

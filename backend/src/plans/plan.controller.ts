@@ -37,7 +37,7 @@ export class PlanController {
     }
 
     @Post("/addMember")
-    addMember(@Body() planData: { id: number; member: { type_id: string; id: string } }): Promise<Plan> {
+    addMember(@Body() planData: { id: number; member: { type_id: string; id: string; name: string; last_name: string; email: string; password: string; phone: string; address: string; city: string }}): Promise<Plan> {
         return this.planService.addMember(planData);
     }
 

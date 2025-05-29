@@ -14,6 +14,30 @@ export class UserController {
         return this.userService.findAll();
     }*/
 
+    @Get('/planId')
+    async getPlanId(@Req() req: Request) {
+        const sessionUser = req.session?.user;
+
+        if (!sessionUser) {
+            throw new BadRequestException('Usuario no autenticado');
+        }
+
+        const user = await this.userService.findOne({
+            type_id: sessionUser.type_id,
+            id: sessionUser.id,
+        });
+
+        if (!user) {
+            throw new BadRequestException('Usuario no encontrado');
+        }
+
+        return {
+            type_id: user.type_id,
+            id: user.id,
+            planId: user.plan?.id ?? null,
+        };
+    }
+
     @Put(':id')
     async updateUser(
         @Param('id') id: string,
