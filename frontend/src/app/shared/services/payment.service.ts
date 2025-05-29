@@ -17,16 +17,19 @@ export class PaymentService {
 
   verifyPlan(): Observable<any> {
     console.log('verifyPlan called');
-    return this.http.get(`${this.apiUrl}/plans/all`).pipe(
+    return this.http.get(`${this.apiUrl}/plans/all`, { withCredentials: true }).pipe(
       tap(() => {
         console.log('Planes obtenidos exitosamente');
-        alert('Tienes un plan activo, puedes solicitar un servicio');
       }),
       catchError(err => {
-        this.showError('Error al obtener los planes');
         return throwError(() => err);
       })
     );
+  }
+
+  deletePlan():Observable<any> {
+    console.log('borrando plan');
+    return this.http.delete(`${this.apiUrl}/plans/delete`,{ withCredentials: true } )
   }
 
   paymentPlan(data: any): Observable<any> {

@@ -27,8 +27,9 @@ export class PlanController {
         return this.planService.create(data);
     }
 
-    @Get('all')
+    @Get('/all')
     async findPlans(@Req() req: Request): Promise<Plan> {
+      console.log("::::::::::::::::")
       if (!req.session?.user) {
         console.log('Usuario no autenticado');
         throw new UnauthorizedException('Usuario no autenticado');
@@ -55,5 +56,14 @@ export class PlanController {
     async getMembers(@Param('id') planId: number) {
         return this.planService.getPlanMembers(planId);
     }
+
+    @Delete("/delete")
+    async deletePlan(@Req() req: Request) {
+    const user = req.session?.user;
+    if (!user) {
+      throw new Error('User not authenticated in session');
+    }
+    return await this.planService.deletePlan(user);
+  }
 
 }

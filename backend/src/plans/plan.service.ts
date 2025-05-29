@@ -186,13 +186,15 @@ export class PlanService {
         });
       
         if (!userEntity) {
-          throw new NotFoundException('User not found');
+            console.log("no hay")
+           throw new NotFoundException('User not found');
         }
       
         if (!userEntity.plan) {
-          throw new NotFoundException('No plan found for this user');
+            console.log("no hay plan ")
+            throw new NotFoundException('No plan found for this user');
         }
-      
+        console.log("DDD", userEntity)
         return userEntity.plan;
     }
 
@@ -224,6 +226,25 @@ export class PlanService {
             planType: 'STANDARD',
         }));
     }
+
+    async deletePlan(user: { type_id: string; id: string }) {
+        const plan = await this.planRepository.findOne({
+          where: {
+            admin: {
+              type_id: user.type_id,
+              id: user.id,
+            },
+          },
+          relations: ['admin'],
+        });
+      
+        if (!plan) {
+          throw new NotFoundException('Plan not found for the given user');
+        }
+        console.log(plan.id)
+        await this.planRepository.delete(plan.id);
+        console.log('BORRO')
+      }
 
       
 }

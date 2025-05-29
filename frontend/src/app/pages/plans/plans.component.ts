@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { PaymentService } from '../../shared/services/payment.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-plans',
   standalone: true,
@@ -19,12 +20,30 @@ export class PlansComponent {
   }
 
 
-  SolicitarPlan() {
-    console.log('Botón de Solicitar Plan clickeado.');
-    if (this.authService.isLoggedUser()) {
-      console.log('Usuario logeado. Redirigiendo a /payment');
-      this.router.navigate(['/payment']);
-    }
-
-}
+  verifyPlan(queryParams: any): void {
+    console.log('Verificando plan activo...');
+  
+    this.paymentService.verifyPlan().subscribe({
+      next: (plan) => {
+        // ✅ Si hay un plan, preguntar si desea cambiarlo
+        const continuar = confirm('Tienes un plan activo. ¿Deseas cambiarlo?');
+        if (continuar) {
+          this.paymentService.deletePlan().subscribe({
+            next: () => {
+              console.log('Plan borrado');
+              this.router.navigate(['/payments'], { queryParams });
+            },
+            error: (err) => {
+              console.error('Error al borrar plan:', err);
+            }
+          });
+        }
+      },
+      error: (err) => {
+        this.router.navigate(['/payments'], { queryParams });
+      }
+    });
+  }
+  
+  
 }

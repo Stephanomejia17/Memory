@@ -14,8 +14,8 @@
           <li>Ataúd o urna básica para cremación</li>
         </ul>
 
-        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
-          [queryParams]="{ name: 'Luz Serena'}">Afiliarme</a>
+        <a  class="btn_afiliacion"
+        (click)="verifyPlan({ name: 'Luz Serena' })">Afiliarme</a>
       </div>
 
       <div class="plan">
@@ -28,8 +28,8 @@
           <li>Asistencia Psicológica</li>
           <li>Servicio Floral</li>
         </ul>
-        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
-          [queryParams]="{ name: 'Recuerdo Eterno'}">Afiliarme</a>
+        <a  class="btn_afiliacion"
+        (click)="verifyPlan({ name: 'Recuerdo Eterno' })">Afiliarme</a>
       </div>
 
       <div class="plan">
@@ -43,8 +43,8 @@
           <li>Servicio de Ceremonia Conmemorativa</li>
           <li>Acompañamiento Psicológico Continuo</li>
         </ul>
-        <a [routerLink]="['/payments']" type="submit" class="btn_afiliacion"
-          [queryParams]="{ name: 'Legado Viviente'}">Afiliarme</a>
+        <a class="btn_afiliacion"
+        (click)="verifyPlan({ name: 'Legado Viviente' })">Afiliarme</a>
       </div>
 
 

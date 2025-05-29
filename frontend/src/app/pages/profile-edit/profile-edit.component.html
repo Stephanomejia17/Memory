@@ -51,7 +51,8 @@
 
             <div class="btn_formulario">
                 <button type="submit">Guardar</button>
-                <button type="reset" (click)="profileForm.reset()">Cancelar</button>
+                <a [routerLink]="['/deceased']"><button type="reset" (click)="profileForm.reset()">Cancelar</button></a>
+               
             </div>
         </form>
     </div>
