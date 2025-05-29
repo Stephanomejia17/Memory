@@ -17,12 +17,11 @@ export class PaymentService {
 
   verifyPlan(): Observable<any> {
     console.log('verifyPlan called');
-    return this.http.get(`${this.apiUrl}/plans/all`).pipe(
+    return this.http.get(`${this.apiUrl}/plans/all`, { withCredentials: true }).pipe(
       tap(() => {
         console.log('Planes obtenidos exitosamente');
       }),
       catchError(err => {
-        this.showError('Error al obtener los planes');
         return throwError(() => err);
       })
     );

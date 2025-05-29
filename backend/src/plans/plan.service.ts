@@ -182,13 +182,15 @@ export class PlanService {
         });
       
         if (!userEntity) {
-          throw new NotFoundException('User not found');
+            console.log("no hay")
+           throw new NotFoundException('User not found');
         }
       
         if (!userEntity.plan) {
-          throw new NotFoundException('No plan found for this user');
+            console.log("no hay plan ")
+            throw new NotFoundException('No plan found for this user');
         }
-      
+        console.log("DDD", userEntity)
         return userEntity.plan;
     }
 

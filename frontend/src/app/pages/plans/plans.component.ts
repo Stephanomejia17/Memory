@@ -20,18 +20,30 @@ export class PlansComponent {
   }
 
 
-  verifyPlan(queryParams:any): void { 
+  verifyPlan(queryParams: any): void {
     console.log('Verificando plan activo...');
-    const plan = this.paymentService.verifyPlan().subscribe();
-    if(plan) {
-      const continuar = confirm('Tienes un plan activo. ¿Deseas cambiarlo?');
+  
+    this.paymentService.verifyPlan().subscribe({
+      next: (plan) => {
+        // ✅ Si hay un plan, preguntar si desea cambiarlo
+        const continuar = confirm('Tienes un plan activo. ¿Deseas cambiarlo?');
         if (continuar) {
-          const DELETE = this.paymentService.deletePlan().subscribe();
-          this.router.navigate(['/payments'], { queryParams });
+          this.paymentService.deletePlan().subscribe({
+            next: () => {
+              console.log('Plan borrado');
+              this.router.navigate(['/payments'], { queryParams });
+            },
+            error: (err) => {
+              console.error('Error al borrar plan:', err);
+            }
+          });
         }
-    }else{
-      this.router.navigate(['/payments'], { queryParams })
-    }
-  } 
+      },
+      error: (err) => {
+        this.router.navigate(['/payments'], { queryParams });
+      }
+    });
+  }
+  
   
 }

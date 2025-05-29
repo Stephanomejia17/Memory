@@ -27,8 +27,9 @@ export class PlanController {
         return this.planService.create(data);
     }
 
-    @Get('all')
+    @Get('/all')
     async findPlans(@Req() req: Request): Promise<Plan> {
+      console.log("::::::::::::::::")
       if (!req.session?.user) {
         console.log('Usuario no autenticado');
         throw new UnauthorizedException('Usuario no autenticado');
