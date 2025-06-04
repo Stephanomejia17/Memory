@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transfer',
@@ -28,10 +29,17 @@ export class TransferComponent implements OnInit {
   customCremacionInput: string = '';
   customSalaInput: string = '';
 
-
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private route: ActivatedRoute) { } 
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+      const name = params.get('name');
+      const id = params.get('id');
+      this.memberName = name ? decodeURIComponent(name) : '';
+      this.memberIdentity = id ? decodeURIComponent(id) : '';
+      console.log('Nombre del miembro:', this.memberName);
+      
+    });
   }
 
   selectOption(group: string, option: string): void {

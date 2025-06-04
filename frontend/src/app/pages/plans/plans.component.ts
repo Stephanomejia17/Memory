@@ -25,9 +25,10 @@ export class PlansComponent {
   
     this.paymentService.verifyPlan().subscribe({
       next: (plan) => {
-        // ✅ Si hay un plan, preguntar si desea cambiarlo
+
         const continuar = confirm('Tienes un plan activo. ¿Deseas cambiarlo?');
         if (continuar) {
+          /// pensar en miembros
           this.paymentService.deletePlan().subscribe({
             next: () => {
               console.log('Plan borrado');

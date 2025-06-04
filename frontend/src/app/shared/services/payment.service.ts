@@ -67,6 +67,6 @@ export class PaymentService {
         padding: '3em',
         color: '#716add',
         backdrop: `rgba(0,0,123,0.4) left top no-repeat`
-      });
+      }); 
     }
 }

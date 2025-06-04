@@ -228,6 +228,7 @@ export class PlanService {
     }
 
     async deletePlan(user: { type_id: string; id: string }) {
+        console.log("..:))))")
         const plan = await this.planRepository.findOne({
           where: {
             admin: {

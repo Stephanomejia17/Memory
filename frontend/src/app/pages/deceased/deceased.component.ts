@@ -79,15 +79,14 @@ export class DeceasedComponent implements OnInit {
     return 'STANDARD';
 }
 
-  onMemberSelect(member: Member): void {
-    console.log('Miembro seleccionado:', member.name, 'Tipo de plan:', member.planType);
-
-    if (member.planType === 'STANDARD') {
-      console.log('Plan STANDARD detectado. Redirigiendo a /transfer');
-      this.router.navigate(['/transfer']);
-    } else {
-      console.log('Plan no STANDARD. Redirigiendo a /certificate.');
-      this.router.navigate(['/certificate']); 
-    }
+  onSelect(member: Member): void {
+    console.log('Miembro seleccionado:', member);
+   
+    this.router.navigate(['/transfer'], {
+      queryParams: {
+        name: member.name,
+        id: member.id,
+      }
+    });
   }
 }
