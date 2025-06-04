@@ -25,7 +25,7 @@
 }
 
 .perfil::before {
-    content: "Miembros";
+    content: "Beneficiarios del plan";
     display: block;
     text-align: center;
     color: #1f2a77;

@@ -31,36 +31,25 @@ export class PlanService {
             id: planData.admin.id,
           },
         });
-    
         if (!admin) {
-          throw new NotFoundException('Admin user not found');
+            throw new NotFoundException('Admin user not found');
         }
-
         if (admin.plan) {
             throw new Error('Admin already has a plan assigned');
         }
+        
+        const plan = this.planRepository.create({
+            name: planData.name,
+            admin,
+        });  
 
-        let plan = await this.planRepository.findOne({
-            where: { name: planData.name },
-        });
-    
-        if (!plan){
-            plan = this.planRepository.create({
-                name: planData.name,
-                admin,
-            });
-
-            await this.planRepository.save(plan);
-        } 
-
+        await this.planRepository.save(plan);
         admin.plan = plan;
-
-        console.log("guardar admin: ", admin);
-
         await this.userRepository.save(admin);
-    
+        console.log("Creando plan con data:", planData);  
         return plan;
     }
+
 
     async addMember(planData: {id: number; member: { type_id: string; id: string; name: string; last_name: string; email: string; password: string; phone: string; address: string; city: string;}; }): Promise<any> {
         const plan = await this.planRepository.findOne({

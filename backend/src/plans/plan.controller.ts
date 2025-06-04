@@ -22,7 +22,6 @@ export class PlanController {
                 id,
             },
             };
-       
         console.log("Creating plan with data:", data);
         return this.planService.create(data);
     }
