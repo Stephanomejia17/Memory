@@ -46,6 +46,19 @@ export class PaymentService {
     );
   }
 
+  updatePlan(data: any): Observable<any> {
+    console.log('updatePlan called with data:', data);
+    return this.http.post(`${this.apiUrl}/plans/update`, data, { withCredentials: true }).pipe(
+      tap(() => {
+        console.log('Plan actualizado exitosamente', data);
+        this.showSuccess('Plan actualizado exitosamente');
+      }),
+      catchError(err => {
+        this.showError('Error al actualizar el plan');
+        return throwError(() => err);
+      })
+    );}
+
   private showError(message: string): void {
       Swal.fire({
         title: 'Oops...',

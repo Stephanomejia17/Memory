@@ -89,4 +89,26 @@ export class DeceasedComponent implements OnInit {
       }
     });
   }
+
+  deleteMember(member: Member): void {
+    if (confirm(`¿Estás seguro de que deseas eliminar a ${member.name} ${member.last_name}?`)) {
+      console.log(this.currentPlanId)
+      const body = {
+        id: this.currentPlanId, 
+        member: {
+          type_id: member.type_id,
+          id: member.id,
+        }};
+      console.log('Eliminando miembro:', body);
+      this.http.post(`${API_BASE_URL}/plans/removeMember`, body).subscribe({
+        next: () => {
+          alert('Miembro eliminado correctamente.');
+        },
+        error: (error) => {
+          console.error('Error al eliminar el miembro:', error);
+          alert('No se pudo eliminar al miembro.');
+        }
+      });
+    }
+  }
 }

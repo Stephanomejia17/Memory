@@ -45,8 +45,8 @@ export class PlanController {
     changeAdmin(@Body() planData: { id: number; admin: { type_id: string; id: string } }): Promise<Plan> {
         return this.planService.changeAdmin(planData);
     }
-
-    @Delete("removeMember")
+    //cambio de delete a post
+    @Post("removeMember")
     removeMember(@Body() planData: { id: number; member: { type_id: string; id: string } }): Promise<Plan> {
         return this.planService.removeMember(planData);
     }
@@ -65,4 +65,24 @@ export class PlanController {
     return await this.planService.deletePlan(user);
   }
 
-}
+  @Post("/update")
+    updatePlan(@Body() planData: { name: string; admin: { type_id: string; id: string }},  @Req() req:Request): Promise<Plan> {
+    if (!req.session?.user) {
+        console.log("Usuario no autenticado");
+        throw new UnauthorizedException('Usuario no autenticado');
+    }
+
+    const { type_id, id } = req.session.user;
+    console.log('Usuario autenticado:', type_id, id);
+    const data = {
+      name: planData.name,
+      admin: {
+          type_id,
+          id,},
+      };
+    console.log("updating:", data);
+
+    return this.planService.updatePlan(data);
+    }
+
+  }

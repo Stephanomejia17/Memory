@@ -236,5 +236,21 @@ export class PlanService {
         console.log('BORRO')
       }
 
+    async updatePlan(planData: { name: string; admin: { type_id: string; id: string }}): Promise<Plan> {
+        const plan = await this.planRepository.findOne({
+            where: {
+                admin_type_id: planData.admin.type_id,
+                admin_id: planData.admin.id  
+            },
+        });
+
+        if (!plan) {
+            throw new NotFoundException('Plan not found');
+        }
+
+        plan.name = planData.name;
+
+        return this.planRepository.save(plan);
+    }
       
 }
