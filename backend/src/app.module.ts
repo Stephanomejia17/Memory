@@ -20,7 +20,7 @@ import { Service } from './services/service.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '023281012',
+      password: 'admin',
       database: 'Memory-BD',
       entities: [User, Plan, Service],
       synchronize: true,

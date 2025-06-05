@@ -69,7 +69,13 @@ export class PlanService {
         });
 
         if (existingMember) {
-            throw new Error('Member with this type_id and id already exists');
+            existingMember.plan = plan;
+            await this.userRepository.save(existingMember);
+            return {
+                message: 'Member created and added to plan successfully',
+                memberId: existingMember.id,
+                planId: plan.id,
+            };
         }
 
         const newMember = this.userRepository.create({
