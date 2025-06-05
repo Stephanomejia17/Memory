@@ -79,15 +79,36 @@ export class DeceasedComponent implements OnInit {
     return 'STANDARD';
 }
 
-  onMemberSelect(member: Member): void {
-    console.log('Miembro seleccionado:', member.name, 'Tipo de plan:', member.planType);
+  onSelect(member: Member): void {
+    console.log('Miembro seleccionado:', member);
+   
+    this.router.navigate(['/transfer'], {
+      queryParams: {
+        name: member.name,
+        id: member.id,
+      }
+    });
+  }
 
-    if (member.planType === 'STANDARD') {
-      console.log('Plan STANDARD detectado. Redirigiendo a /transfer');
-      this.router.navigate(['/transfer']);
-    } else {
-      console.log('Plan no STANDARD. Redirigiendo a /certificate.');
-      this.router.navigate(['/certificate']); 
+  deleteMember(member: Member): void {
+    if (confirm(`¿Estás seguro de que deseas eliminar a ${member.name} ${member.last_name}?`)) {
+      console.log(this.currentPlanId)
+      const body = {
+        id: this.currentPlanId, 
+        member: {
+          type_id: member.type_id,
+          id: member.id,
+        }};
+      console.log('Eliminando miembro:', body);
+      this.http.post(`${API_BASE_URL}/plans/removeMember`, body).subscribe({
+        next: () => {
+          alert('Miembro eliminado correctamente.');
+        },
+        error: (error) => {
+          console.error('Error al eliminar el miembro:', error);
+          alert('No se pudo eliminar al miembro.');
+        }
+      });
     }
   }
 }

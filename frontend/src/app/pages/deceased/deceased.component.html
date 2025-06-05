@@ -2,18 +2,17 @@
   <form class="perfil">
     <div class="lista-miembros">
       <div class="miembro" *ngFor="let member of members">
-        <a [routerLink]="['/transfer']">
-          <span>{{ member.name }} {{ member.last_name }}</span>
-        </a>
-        <button type="button" class="eliminar">Eliminar</button>
+        <a  (click)="onSelect(member)" > <span>{{ member.name }} {{ member.last_name }}</span> </a>
+
+        <button type="button" (click)="deleteMember(member)" class="eliminar">Eliminar</button>
       </div>
-      <button [routerLink]="['/profile-edit']" type="button" class="agregar">Agregar Miembro</button>
+      <button [routerLink]="['/profile-edit']" type="button" class="agregar">Agregar Beneficiario</button>
     </div>
 
   </form>
 
   <div class="opciones">
-    <a [routerLink]="['/deceased']"><button type="button">Miembros</button></a>
+    <a [routerLink]="['/deceased']"><button type="button">Beneficiarios</button></a>
     <a [routerLink]="['/profile']"><button type="button">Titular</button></a>
     <a [routerLink]="['/plans']"><button type="button">Plan</button></a>
   </div>
