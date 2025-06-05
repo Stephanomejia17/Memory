@@ -103,6 +103,9 @@ export class DeceasedComponent implements OnInit {
       this.http.post(`${API_BASE_URL}/plans/removeMember`, body).subscribe({
         next: () => {
           alert('Miembro eliminado correctamente.');
+          if (this.currentPlanId) {
+            this.loadMembers(this.currentPlanId);  // 👈 Recarga la lista de miembros
+          }
         },
         error: (error) => {
           console.error('Error al eliminar el miembro:', error);

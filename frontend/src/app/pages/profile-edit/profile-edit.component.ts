@@ -109,7 +109,7 @@ addMember(member: Member): void {
       next: (newMember) => {
         console.log('Miembro agregado exitosamente: ', newMember);
         alert('Miembro agregado correctamente')
-        this.router.navigate(['/members']);
+        this.router.navigate(['/deceased']);
       },
       error: (error) => {
         console.error('Error al agregar miembro: ', error);
