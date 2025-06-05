@@ -2,7 +2,9 @@
   <form class="perfil">
     <div class="lista-miembros">
       <div class="miembro" *ngFor="let member of members">
-        <span>{{ member.name }} {{ member.last_name }}</span>
+        <a [routerLink]="['/transfer']">
+          <span>{{ member.name }} {{ member.last_name }}</span>
+        </a>
         <button type="button" class="eliminar">Eliminar</button>
       </div>
       <button [routerLink]="['/profile-edit']" type="button" class="agregar">Agregar Miembro</button>
